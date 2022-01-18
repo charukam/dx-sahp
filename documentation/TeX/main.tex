@@ -1,0 +1,350 @@
+\documentclass{ucalgarythesis}
+  
+%% Packages
+\usepackage[utf8]{inputenc}
+\usepackage{url} % Breaks up urls
+\usepackage{amssymb,amsthm,amsmath,upgreek,siunitx,units} % Better math symbols
+\usepackage{titlesec} % Remove chapter headings
+\usepackage{setspace} % Line spacing
+\usepackage{graphicx} % Graphics
+\usepackage{subfig} % Insert figures side by side
+\usepackage{array} % Table spacing
+\usepackage[font={small}]{caption} % Small font in figure and table captions
+\usepackage{color} % Colors
+\usepackage[table]{xcolor} % Table color
+\usepackage{float} % Floating figures and tables
+\usepackage{chemformula} % Chemical formulas
+\usepackage{enumitem} % Lists
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%  User-defined commands
+\titleformat{\chapter}[display]
+{\normalfont\bfseries}{}{0pt}{\Huge}
+\setstretch{1.4}
+\setlength{\parindent}{0pt}
+\newcommand{\eqname}[1]{\tag*{#1}} % Tag equation with name
+\newcolumntype{P}[1]{>{\centering\arraybackslash}p{#1}} % Table Spacing
+\renewcommand{\labelitemii}{$\circ$} % Second bullet symbol
+\renewcommand{\labelitemiii}{$\cdot$} % Third bullet symbol
+\newcommand\ddfrac[2]{\frac{\displaystyle #1}{\displaystyle #2}} % Less cramped fractions
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%% Colors
+\definecolor{greenOverleaf}{RGB}{19, 138, 7}
+\definecolor{orangeRed}{RGB}{255, 90, 90}
+\definecolor{Gray}{gray}{0.85}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+\begin{document}
+%% Title Page
+\frontmatter
+\makethesistitle
+\newpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%% Executive Summary
+\chapter{Executive Summary}
+This report will explore the research, calculations, and engineering design as the preliminary work required before constructing a Direct Expansion Solar Assisted Heat Pump. These systems combine the benefits of solar energy and heat pump technology to provide hot water for domestic use with high efficiencies. With Calgary being the sunniest city in Canada [1], there is a vast under-utilization of solar energy. This report outlines a heat pump design that utilizes solar energy to heat water for residential use. A parametric study was performed to determine the optimum solar collector configuration. Subsequently, a component matching study was conducted to find compatible compressor, condenser, and expansion valve components. The results from these studies are presented in this report with plans for producing a working model next semester.
+\newpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+ 
+%% Acknowledgements
+\chapter{Acknowledgements}  
+The Direct Expansion Solar Assisted Heat Pump project is supported by the Department of Mechanical and Manufacturing Engineering at the University of Calgary. The authors would like to acknowledge Dr. Aggrey Mwesigye, Dr. Simon Li, and Dr. Ron Hugo for providing their technical expertise in support of the development of this project. The authors are also grateful to industry professional David Barret of Klass Mechanical for providing insights crucial to the successful manufacturing of The Direct Expansion Solar Assisted Heat Pump system.
+\newpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    
+%% Table of Contents
+\tableofcontents
+\newpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%% List of Figures
+\listoffigures
+\newpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+  
+%% List of Tables
+\listoftables
+\newpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+  
+%% List of Symbols and Variables
+\chapter{List of Symbols and Variables}      
+\vspace{-2mm}
+
+\textbf{Greek Letters}
+\vspace{-7mm}
+\begin{tabbing}
+    \textbf{}\=\\
+    \addsymbol \mbox{$\alpha$}: {absorbance}
+    \addsymbol \mbox{$\alpha_L$}: {linear expansion coefficient $[1/K]$}
+    \addsymbol \mbox{$\beta$}: {tilt angle of collector}
+    \addsymbol \mbox{$\delta$}: {absorber plate thickness [m]}
+    \addsymbol \mbox{$\varepsilon$}: {emissivity}
+    \addsymbol \mbox{$\mu$}: {viscosity $[Pa\cdot s]$}
+    \addsymbol \mbox{$\nu$}: {kinematic viscosity $[m^2/s]$}
+    \addsymbol \mbox{$\rho$}: {density $[kg/m^3]$}
+    \addsymbol \mbox{$\sigma$}: {Boltzmann's constant}
+    \addsymbol \mbox{$\uptau$}: {transmittance} 
+\end{tabbing}
+\vspace{-3mm}
+
+\textbf{Capital Letters}
+\vspace{-7mm}
+\begin{tabbing}
+    \textbf{ }\=\\
+    \addsymbol \mbox{$A$}: {collector area $[m^2]$}
+    \addsymbol \mbox{$C_b$}: {bond conductance $[W/mK]$}
+    \addsymbol \mbox{$C_p$}: {thermal capacitance of circulating fluid}
+    \addsymbol \mbox{$D$}: {outside pipe diameter $[m]$}
+    \addsymbol \mbox{$D_i$}: {inside pipe diameter $[m]$}
+    \addsymbol \mbox{$F'$}: {collector efficiency factor}
+    \addsymbol \mbox{$FR$}: {collector heat removal factor}
+    \addsymbol \mbox{$h_{c,p-c}$}: {convection heat transfer coefficient between absorber plate and cover}
+    \addsymbol \mbox{$h_{fi}$}: {heat transfer coefficient between fluid and tube wall}
+    \addsymbol \mbox{$h_{w}$}: {convection heat transfer coefficient between the cover and the ambient}
+    \addsymbol \mbox{$I$}: {irradiance $[W/m^2]$}
+    \addsymbol \mbox{$K_L$}: {loss coefficient}
+    \addsymbol \mbox{$L_c$}: {collector length $[m]$}
+    \addsymbol \mbox{$L_p$}: {length of pipe $[m]$}
+    \addsymbol \mbox{$P_e$}: {Pressure drop due to elbows $[Pa]$}
+    \addsymbol \mbox{$P_f$}: {pressure drop due to friction $[Pa]$}
+    \addsymbol \mbox{$Q$}: {heat transfer $[W]$}
+    \addsymbol \mbox{$Re$}: {Reynolds number}
+    \addsymbol \mbox{$T$}: {temperature $[K]$}
+    \addsymbol \mbox{$U$}: {heat loss coefficient $[W/m^2K]$}
+    \addsymbol \mbox{$V_w$}: {wind speed $[m/s]$}
+    \addsymbol \mbox{$W$}: {tube centre to centre distance $[m]$}
+\end{tabbing}
+\vspace{-3mm}
+
+\textbf{Lowercase Letters}
+\vspace{-7mm}
+\begin{tabbing}
+    \textbf{ }\=\\
+    \addsymbol \mbox{$e$}: {absolute pipe roughness [m]}
+    \addsymbol \mbox{$f$}: {friction factor}
+    \addsymbol \mbox{$g$}: {gravity $[m/s^2]$}
+    \addsymbol \mbox{$h$}: {heat loss coefficient}
+    \addsymbol \mbox{$k$}: {conductivity}
+    \addsymbol \mbox{$\dot m$}: {mass flow rate of refrigerant $[kg/s]$}
+    \addsymbol \mbox{$w$}: {velocity of fluid $[m/s]$}
+    \addsymbol \mbox{$z$}: {height $[m]$}
+\end{tabbing}
+\vspace{-3mm}
+
+\textbf{Subscripts}
+\vspace{-7mm}
+\begin{tabbing}
+    \textbf{ }\=\\
+    \addsymbol \mbox{$a$}: {ambient}
+    \addsymbol \mbox{$c$}: {collector }
+    \addsymbol \mbox{$g$}: {glazing}
+    \addsymbol \mbox{$I$}: {insulation}
+    \addsymbol \mbox{$i$}: {inlet of refrigerant}
+    \addsymbol \mbox{$k$}: {conductivity}
+    \addsymbol \mbox{$L$}: {heat out}
+    \addsymbol \mbox{$p$}: {plate}
+    \addsymbol \mbox{$pm$}: {plate mean}
+    \addsymbol \mbox{$U$}: {heat in}    
+\end{tabbing}
+\newpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%% Content
+\mainmatter
+
+\include{chapter1}
+\include{chapter2}
+\include{chapter3}
+\include{chapter4}
+\include{chapter5}
+\include{chapter6}
+%\include{examples}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+% Bibliography
+\thesisbibliography
+
+%% Standard bibliography
+\begin{thebibliography}{9}
+\raggedright
+    \bibitem{calgary_sun} O. Nag, "The Sunniest Cities in Canada," Reunion Technology Inc., 11 June 2019. [Online]. Available: \url{https://www.worldatlas.com/articles/the-sunniest-cities-in-canada.html}. [Accessed 10 December 2021].
+    
+    \bibitem{water_heaters} Government of Canada, "Water Heaters," Government of Canada, 4 October 2021. [Online]. Available: \url{https://www.nrcan.gc.ca/energy-efficiency/products/product-information/water-heaters/13735}. [Accessed 7 October 2021].
+    
+    \bibitem{stats_canada} Statistic Canada, "Appendix G Estimated number of households and average household size by domain, Canada," Statistic Canada, [Online]. Available: \url{https://www150.statcan.gc.ca/n1/pub/62f0026m/2017002/app-ann-g-eng.htm}. [Accessed 22 September 2021].
+    
+    \bibitem{heat_pump_water_heaters} Department of Energy, "Heat Pump Water Heaters," [Online]. Available: \url{https://www.energy.gov/energysaver/heat-pump-water-heaters}. [Accessed 3 December 2021].
+    
+    \bibitem{water_heater_img1} Waterheatertimer, "How to install two water heaters," [Online]. Available: \url{http://waterheatertimer.org/two-water-heaters.html}. [Accessed 6 December 2021].
+    
+    \bibitem{water_heater_img2} M. Bryan, "Heat Pump Water Heaters A Hot Commodity, But Not For Everyone | Northwest News Network," Northwest News Network, 7 November 2013. [Online]. Available: \url{https://www.nwnewsnetwork.org/energy/2013-11-07/heat-pump-water-heaters-a-hot-commodity-but-not-for-everyone}. [Accessed 6 December 2021].
+    
+    \bibitem{solar_thermal_energy} A. Smets, K. Jage, O. Isabella, R. V. Swaaij and M. Zeman, "Solar Thermal Energy," in Solar Energy: The Physics and Engineering of Photovotaic Conversion, Technologies and Systems, UIT Cambridge, pp. 497-518.
+    
+    \bibitem{flat_plate} C. Williams, "HeatSpring Magazine - Which is Better: Solar Thermal Flat Plate or Evacuated Tube Collectors?," HeatSpring Magazine, 10 May 2011. [Online]. Available: \url{https://blog.heatspring.com/solar-thermal-flat-plate-or-evacuated-tube-collectors/}. [Accessed 30 September 2021].
+    
+    \bibitem{ozone_layer} Enivronmental Protection Agency (EPA), "epa.gov," July 2015. [Online]. Available: \url{https://www.epa.gov/sites/default/files/2015-07/documents/phasing_out_hcfc_refrigerants_to_protect_the_ozone_layer.pdf}. [Accessed 3 December 2021].
+    
+    \bibitem{odp} United Nations Environment Programme, "Handbook for the Montreal Protocol on Substances that Deplete the Ozone Layer," United Nations Environment Programme, Nairobi, 2020.
+    
+    \bibitem{gwp} Environmental Protection Agency, "Understanding Global Warming Potentials," 18 October 2021. [Online]. Available: \url{https://www.epa.gov/ghgemissions/understanding-global-warming-potentials}. [Accessed 3 December 2021].
+    
+    \bibitem{montreal_protocol} United Nations Environment Programme, "About Montreal Protocol," [Online]. Available: \url{https://www.unep.org/ozonaction/who-we-are/about-montreal-protocol}. [Accessed 3 December 2021].
+
+    \bibitem{hfcs} European Union, "Flourinated greenhouse gases and repealing Regulation (EC) No 842/2006," REGULATION (EU) No 517/2014 OF THE EUROPEAN PARLIAMENT AND OF THE COUNCIL of 16 April 2014 , p. 36, 2014. 
+
+    \bibitem{ashrae_safety} American Society of Heating, Refrigerating and Air-Conditioning Engineers, "Designation and Safety Classification of Refrigerants," Standing Standard Project Committee, Atlanta, 2016.
+
+    \bibitem{low_gwp} Air-Conditioning, Heating, \& Refrigeration Institute (AHRI), "Lower Global Warming Potential Refrigerants: Frequently Asked Questions," Arlington, 2019.
+
+    \bibitem{low_gwp_options} M. O. McLinden, J. S. Brown, R. Brignoli, A. F. Kazakov and P. A. Domanski, "Limited options for low-global-warming-potential refrigerants," Nature Communications, p. 9, 2017.
+
+    \bibitem{cool_prop} I. H. a. W. J. a. Q. S. a. L. V. Bell, "Pure and Pseudo-pure Fluid Thermophysical Property Evaluation and the Open-Source Thermophysical Property Library CoolProp," Industrial \& Engineering Chemistry Research, vol. 53, no. 6, pp. 2498-2508, 2014.
+
+    \bibitem{other_compressors} K. T. A. a. K. T. Ooi, "A Review on Sliding Vane and Rolling Piston Compressors," MDPI, 21 June 2021. [Online]. Available: \url{https://www.mdpi.com/2075-1702/9/6/125/htm}. [Accessed 8 December 2021].
+
+    \bibitem{hermetic_compressors} "Hermetic Compressors," [Online]. Available: \url{https://nptel.ac.in/content/storage2/courses/112105129/R&AC\%20Web\%20files/R&AC\%20Lecture\%202/Hyperlinks/Hermetic\%20compressors.htm}.
+
+    \bibitem{what_hermetic_compressor} "What is Hermatically Sealed Compressor? Working, Construction \& Diagram.," Electrical Workbook, 2021 July 29. [Online]. Available: \url{https://electricalworkbook.com/hermetically-sealed-compressor/}.
+
+    \bibitem{emerson_hermetic} EmersonAdmin, "Introducing Copeland Variable Speed Reciprocating Hermetic Compressors for Refrigeration," Emerson Climate Conversations, 9 March 2021. [Online]. Available: \url{https://emersonclimateconversations.com/2021/03/09/introducing-copeland-variable-speed-reciprocating-hermetic-compressors/}. [Accessed 6 December 2021].
+
+    \bibitem{how_compressor_works} Bob, "How a Refrigeration Compressor Works," 2019 October 4. [Online]. Available: \url{https://www.compressorsunlimited.com/blog/how-a-refrigeration-compressor-works}.
+
+    \bibitem{vapor_compression_refrigeration} "Vapor-compression Refrigeration," [Online]. Available: \url{https://en.wikipedia.org/wiki/Vapor-compression_refrigeration}.
+
+    \bibitem{scroll_compressors} Bob, "What are Scroll Compressors?," Compressors Unlimited LLC, 12 March 2019. [Online]. Available: \url{https://www.compressorsunlimited.com/blog/what-are-scroll-compressors-)}.
+
+    \bibitem{variable_speed_hermetic} D. Langenkamp, "Copeland Variable Speed Reciprocating Hermetic Compressors for Refrigeration," Emerson Climate , February 2020. [Online]. Available: \url{https://climate.emerson.com/documents/e360-variable-speed-reciprocating-hermetic-compressors-for-refrigeration.pdf}. [Accessed 6 December 2021].
+
+    \bibitem{air_compressor} E. Waqar, "Air Compressor | What are the types of compressors?," Mechanical Boost, [Online]. Available: \url{https://mechanicalboost.com/air-compressor-types-and-applications/}. [Accessed 27 September 2021].
+
+    \bibitem{scroll_compressor} "Scroll Compressor," LENNOX, 2021. [Online]. Available: \url{https://www.lennox.com/buyers-guide/guide-to-hvac/glossary/scroll-compressor}.
+
+    \bibitem{what_scroll_compressor} Bob, "What are Scroll Compressors?," Compressors Unlimited International, 12 March 2019. [Online]. Available: \url{https://www.compressorsunlimited.com/blog/what-are-scroll-compressors}. [Accessed 6 December 2021].
+
+    \bibitem{centrifugal_compressor} Nevada pneumatic, 2020. [Online]. Available: \url{https://www.nevadapneumatic.com/pro-cons-centrifugal.html}.
+
+    \bibitem{climate_summary} G. o. Canada, "Monthly Climate Summaries," 25 November 2021. [Online]. Available: \url{https://climate.weather.gc.ca/prods_servs/cdn_climate_summary_e.html}. [Accessed 25 September 2021].
+
+    \bibitem{exv_txv} A. M. a. D. Jamie Kitchen, "EEV's vs TXV's," 30 May 2017. [Online]. Available: \url{https://www.linkedin.com/pulse/eevs-vs-txvs-jamie-kitchen}. [Accessed 8 December 2021].
+
+    \bibitem{txv} V. Parthan, "Thermostatic Expansion Valve| Its important concepts and 2 FAQs," LambdaGeeks, [Online]. Available: \url{https://lambdageeks.com/thermostatic-expansion-valve-concepts-and-2-faqs/}. [Accessed 8 December 2021].
+
+    \bibitem{solar_energy_thermal_process} D, J. A. Duffie and W. A. Beckman, Solar Engineering of Thermal Processess, WIley, 2013. 
+    
+    \bibitem{MATLAB} Mathworks, MATLAB, 2021. 
+
+    \bibitem{insulation} Energy Saver, "How Insulation Works," [Online]. Available: \url{https://www.energy.gov/energysaver/insulation}.
+
+    \bibitem{heat_losses} S. H. Yoon, J.-H. Choi and K.-B. Nguyen, "Effect of working-fluid filling ratio and cooling-water flow rate on the performance of solar collector with closed-loop oscillating heat pipe.," Journal of Mechanical Science and Technology 26, January 2012. [Online]. Available: \url{https://www.researchgate.net/figure/Heat-losses-in-a-flat-plate-solar-collector_fig1_257774731}.
+    
+    \bibitem{thermal_insulation} Certified Commercial Property Inspectors Association, 2021. [Online]. Available: : \url{https://ccpia.org/types-of-low-slope-roof-thermal-insulation/)for}.
+    
+    \bibitem{insulation_design} National Mechanical Insulation Committee, "Condensation Control Calculator - Horizontal Pipe," 28 November 2016. [Online]. Available: \url{https://www.wbdg.org/guides-specifications/mechanical-insulation-design-guide/simple-calculators}.
+    
+    \bibitem{mineral_wool} "Mineral Wool Insulation Pros and Cons," Solar 365 the home to alternative energy, [Online]. Available: \url{http://www.solar365.com/green-homes/insulation/mineral-wool-insulation-pros-cons}. [Accessed 6 December 2021].
+    
+    \bibitem{emissivity} Materion, "Thermal Emissivity and Radiative Heat Transfer," Materion Performance Alloys, June 2018. [Online]. Available: \url{https://materion.com/-/media/files/alloy/newsletters/technical-tidbits/issue-no-114-thermal-emissivity-and-radiative-heat-transfer.pdf}. [Accessed 27 October 2021].
+    
+    \bibitem{epri} Energy.gov, "Energy Performance Ratings for Windows, Doors, and Skylights," US Department of Energy, [Online]. Available: \url{https://www.energy.gov/energysaver/energy-performance-ratings-windows-doors-and-skylights#:~:text=Solar\%20heat\%20gain\%20coefficient\%20(SHGC,the\%20greater\%20its\%20shading\%20ability.}. [Accessed 9 October 2021].
+    
+    \bibitem{glass_glazing} Vitro Architectural Glass, "Starphire® Glass for Exteriors," Vitro, 2021. [Online]. Available: \url{https://www.vitroglazings.com/products/low-iron-glass/starphire-ultra-clear-glass/exterior-starphire-glass/#downloads}. [Accessed 25 October 2021].
+    
+    \bibitem{polycarbonate_glazing} SABIC , "WLMW Polycarbonate Sheet," SABIC INNOVATIVE PLASTICS, [Online]. Available: \url{http://www.polukarbonaat.ee/juhendid/docs/cerificate/WLMW_data_sheet.pdf}. [Accessed 28 October 2021].
+    
+    \bibitem{low_iron_glass} JNS Glass \& Coatings, "LOW IRON GLASS – ULTRA CLEAR, STARPHIRE, OPTIWHITE," JNS, 2021. [Online]. Available: \url{https://jnsglass.com/low-iron-glass/}. [Accessed 20 October 2021].
+    
+    \bibitem{polycarbonate} Professional Plastics, "Polycarbonate Sheet - Standard Grade," Professional Plastics, 2021. [Online]. Available: \url{https://www.professionalplastics.com/POLYCARBONATESHEET}. [Accessed 15 October 2021].
+    
+    \bibitem{fiberglass} KALLITE Sales Division, "Fiberglass Solar Glazing and Greenhouse Covering," KALLITE, 2019. [Online]. Available: \url{http://www.solar-components.com/SUN.HTM}. [Accessed 10 October 2021].
+    
+    \bibitem{lexan} Professional Plastics, "LEXAN™ Sheet," Professional Plastics, 2021. [Online]. Available: \url{https://www.professionalplastics.com/LEXANSHEET9034}. [Accessed 12 October 2021].
+    
+    \bibitem{suntuf} PALRAM AMERICAS, "SUNTUF® CORRUGATED POLYCARBONATE SHEET," Palram, [Online]. Available: \url{https://www.palram.com/us/product/suntuf-diy-polycarbonate-corrugated-sheets/#1582184904168-2d0579aa-bf15}. [Accessed 21 October 2021].
+    
+    \bibitem{low_iron_glass_vs_regular} A. Luible, "Introduction on use of glass in modern buildings," Research Gate, April 2002. [Online]. Available: \url{https://www.researchgate.net/figure/Wave-lengths-transmission-of-regular-float-glass-and-low-iron-glass-in-comparison_fig6_37455557}. [Accessed 2 November 2021].
+    
+    \bibitem{plexiglass} Plastic Genius, "Plexiglass Sheets, Fiberglass, UHMW, Polycarbonate \& Engineering plastics," Plastic Genius, 20 April 2011. [Online]. Available: \url{http://www.plasticgenius.com/2011/05/infrared-and-ultraviolet-transmission.html}. [Accessed 2 November 2021].
+    
+    \bibitem{polycarbonate_yellowing} D. D. Priddy, "Why Do Polycarbonate Windows Sometimes Turn Yellow?," Plastic Expert Group, [Online]. Available: \url{https://www.plasticexpert.com/wp-content/uploads/2019/01/Why-Do-Polycarbonate-Windows-Turn-Yellow.pdf}. [Accessed 3 November 2021].
+    
+    \bibitem{thermally_conductive_materials} K. Wilson, "Top 10 Thermally Conductive Materials," Thermtest, 2018. [Online]. Available: \url{https://thermtest.com/thermal-resources/top-10-resources/top-10-thermally-conductive-materials}. [Accessed 10 October 2021].
+    
+    \bibitem{thermal_conductivity of steel} K. Wilson, "Thermal Conductivity Of Steel," Thermtest, 4 May 2021. [Online]. Available: \url{https://thermtest.com/thermal-conductivity-of-steel#:~:text=The\%20thermal\%20conductivity\%20of\%20steel,235\%20W\%2F(mK)\%20respectively.}. [Accessed 11 October 2021].
+    
+    \bibitem{copper_prices} Macro Trends, "Copper Prices - 45 Year Historical Chart," Macro Trends, 2021. [Online]. Available: \url{https://www.macrotrends.net/1476/copper-prices-historical-chart-data}. [Accessed 2 December 2021].
+    
+    \bibitem{aluminum_prices} MetalMiner, "Aluminum," MetalMiner, 2021. [Online]. Available: \url{https://agmetalminer.com/metal-prices/aluminum/}. [Accessed 2 December 2021].
+    
+    \bibitem{high_temp_coating} Dampney Engineered Coatings, "Industrial high-temperature protective coatings," Dampney, [Online]. Available: \url{http://www.dampney.com/Product-Line/AT/View/PID/2/Thurmalox-250}. [Accessed 15 November 2021].
+    
+    \bibitem{serpentine_bending} G. Winton, "Serpintine Bending in Production," 2021. [Online]. Available: \url{https://www.wintonmachine.com/serpentine-bending-in-production}.
+    
+    \bibitem{power_plugs} "Power Plugs and Sockets of the World.," [Online]. Available: \url{https://www.power-plugs-sockets.com/ca/canada}.
+    
+    \bibitem{canada_voltage} H. Chen, "What Voltage is used in Canada," [Online]. Available: \url{https://lastfiascorun.com/canada/what-voltage-is-used-in-canada.html}.
+   
+    \bibitem{valve_selection} Carel S.p.A, 05 August 2007. [Online]. Available: \url{file:///C:/Users/jsamb/AppData/Local/Temp/EEV\%20Valve\%20Selection\%20Criteria.pdf}.
+    
+    \bibitem{variable_speed_drives} "Copeland Variable Speed Reciprocating Hermetic Compressors and Drives," Emerson Climate , [Online]. Available: \url{https://climate.emerson.com/en-us/shop/1/copeland-variable-speed-hermetic-compressors-and-drives?fetchFacets=true#facet:&partsFacet:&facetLimit:&productBeginIndex:0&partsBeginIndex:0&orderBy:2&partsOrderBy:&pageView:list&minPrice:&maxPrice:&pageSize:&}. [Accessed 9 December 2021].
+    
+    \bibitem{exv_selection} Carel S.p.A, "Electronic Expansion Valve Selection," 05 August 2007. [Online]. Available: \url{file:///C:/Users/jsamb/AppData/Local/Temp/EEV\%20Valve\20Selection\%20Criteria.pdf}.
+    
+    \bibitem{water_tank_selection} Hydro Solar Innovative Energy, "All in One Buffer Tank and Indirect Water Heater 250 L - Standard Diameter Lower \& Upper Coil" Hydro Solar, [Online]. Available: \url{https://hydrosolar.ca/collections/buffer-tank-indirect-water-heater-kit/products/all-in-one-buffer-tank-and-indirect-water-heater-250-l}. [Accessed 26 November 2021].
+    
+    \bibitem{exv_performance} A. S. 1. (SI), "2017 Standard for Performance Rating of Expansion Valves," Air-Conditioning, Heating, and Refrigeration Institute, Arlington, 2017.
+    
+    \bibitem{exv_types} Danfoss, "Electric expansion valves Type ETS 6 Datasheet," August 2019. [Online]. Available: \url{https://assets.danfoss.com/documents/37229/AI227986437323en-000901.pdf}. [Accessed November 20 2021].
+    
+    \bibitem{fluid_mechanics} P. M.Gerhart, A. L. Gerhart and J. I. Hochstein, "Fundamentals of Fluid Mechanics Eighth Edition," WileyPlus, 2015, pp. 414 - 441.
+    
+    \bibitem{sporlan} Parker Hannifin Corporation, Sporlan, February 2005. [Online]. Available: \url{https://www.parker.com/literature/Sporlan/Sporlan\%20pdf\%20files/Sporlan\%20pdf\%20040/40-10-7.pdf}. [Accessed November 2021].
+    
+    \bibitem{accumulator} L. Molenda, "What is a Suction Accumulator?," HVAC School, 5 February 2019. [Online]. Available: \url{https://hvacrschool.com/whast-is-a-suction-accumulator/}. [Accessed 10 November 2021].
+    
+    \bibitem{accumulator_basics} B. Hess, "The Basics of Suction Accumulators in Home Heat Pump Systems," AC \& Heating Connect - Emerson, April 2020. [Online]. Available: \url{https://www.ac-heatingconnect.com/contractors/home-heat-pump-system-components-suction-accumulators/}. [Accessed 20 November 2021].
+    
+    \bibitem{sight_glass} Danfoss - Engineering Tomorrow, "Filter driers and sight glasses," Danfoss, Tuesday March 01 2011. [Online]. Available: \url{https://www.danfoss.com/en/service-and-support/case-stories/dcs/filter-driers-and-sight-glasses/}. [Accessed 15 November 2021].
+    
+    \bibitem{sight_glass_install} J. Marchese, "Where To Install the Liquid Line Sight Glass," The News: Air Conditioning, Heating, Refrigeration, 29 August 2020. [Online]. Available: \url{https://www.achrnews.com/articles/143707-where-to-install-the-liquid-line-sight-glass}. [Accessed 27 November 2021].
+    
+    \bibitem{controller} Danfoss, "Superheat controller, EKE 1D," September 2021. [Online]. Available: \url{https://assets.danfoss.com/documents/189972/AN325741271542en-000403.pdf}. [Accessed 25 November 2021].
+    
+    \bibitem{thermometer} Maxim, "DS18B20 Programmable Resolution 1-Wire Digital Thermometer," REV: 042208. [Online]. Available: \url{https://cdn-shop.adafruit.com/datasheets/DS18B20.pdf}. [Accessed 15 November 2021].
+    
+    \bibitem{pressure_transducer1} Omega, " All Stainless Steel Transducer/Transmitter Multimedia Compatibility PX309 Series," [Online]. Available: \url{https://assets.omega.com/pdf/test-and-measurement-equipment/pressure/pressure-transducers/PX309.pdf}. [Accessed 2021 28 November].
+    
+    \bibitem{pressure_transducer2} Vision Turbine Flow Metera, "Models BV1000, BV2000 and BV3000 for Low Viscosity and Non-Aggressive Liquids NSF/ANSI Standards 61 and 372 Certified," Februrary 2019. [Online]. Available: \url{https://assets.omega.com/spec/dynasonics_product_summary_brochure_ttm-br-01388-en_2.pdf}. [Accessed 28 November 2021].
+    
+    \bibitem{[pwer_meter} "MegaPower (TM) Plug Power Meter Monitor Energy Watt Voltage Amps Meter with Electricity Usage Monitor, Reduce Your Energy Cost," [Online]. Available: \url{https://www.bestbuy.ca/en-ca/product/megapower-megapower-tm-plug-power-meter-monitor-energy-watt-voltage-amps-meter}. [Accessed 6 December 2021].
+
+\end{thebibliography}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%% Appendices
+\appendix
+
+\include{appendixa}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+% End of Document
+\end{document}
