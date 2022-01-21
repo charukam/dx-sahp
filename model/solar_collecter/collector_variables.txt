@@ -1,0 +1,12 @@
+﻿"absorber_plate_width" = 1000mm
+"absorber_plate_length" = 2000mm
+"absorber_plate_thickness" = 4mm
+"groove_depth" = 10mm
+"frame_thickness" = 60mm
+"insulation_thickness" = 50mm
+"glass_thickness" = 3mm
+"pipe_distances" = 100mm
+"pipe_OD" = 8.5mm
+"pipe_ID" = 7.8mm
+"pipe_straight_length" = 850mm
+"absorber_to_glass" = 25mm
