@@ -1,5 +1,5 @@
 # Direct Expansion Solar Assisted Heat Pump
-![Heat Pump Cycle Schedmatic](https://github.com/charukam/dx-sahp/blob/update_model/documentation/TeX/images/schematic.png?raw=true)
+![Heat Pump Cycle Schematic](https://github.com/charukam/dx-sahp/blob/update_model/documentation/TeX/images/schematic.png?raw=true)
 Univeristy of Calgary Capstone Project creating a full scale heat pump cycle with a novel solar collector to heat a domestic hot water tank.
 
 ### MATLAB Code
