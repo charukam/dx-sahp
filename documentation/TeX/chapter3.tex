@@ -185,7 +185,7 @@ The day-long collector efficiency is the summation of instantaneous efficiencies
 \end{align}
 
 \bigskip
-As seen in the equations above, the absorber plate’s mean temperature is important in determining the values evaluated by the previous governing equations. With many unknowns, this value can only be determined through an iterative solution approach using an initial guess for the plate mean’s temperature. For our purposes, an initial guess of $T_{pm} = T_{fi} + 5$ is reasonable [33]. Following the iterative algorithm described in the 'Code Logic' below, and summarized in Figure 3.4, the equation below can be used to determine a convergent solution for the final mean temperature of the plate:
+As seen in the equations above, the absorber plate’s mean temperature is important in determining the values evaluated by the previous governing equations. With many unknowns, this value can only be determined through an iterative solution approach using an initial guess for the plate mean’s temperature. For our purposes, an initial guess of $T_{pm} = T_{fi} + 5$ is reasonable \cite{solar_energy_thermal_process}. Following the iterative algorithm described in the 'Code Logic' below, and summarized in Figure 3.4, the equation below can be used to determine a convergent solution for the final mean temperature of the plate:
 \begin{align}
     T_{pm} = T_{fi} + \ddfrac{\frac{Q_u}{A_c}}{FRU_L} (1 - FR)
 \end{align}
@@ -195,7 +195,7 @@ As seen in the equations above, the absorber plate’s mean temperature is impor
 In thermodynamics, heat pump cycles are bound by two reservoir temperatures, namely, the evaporation and the condensation temperatures. For the purposes of the system, the condensation temperature is regarded as a set point: since the system is designed to support an outlet water temperature of 55\textdegree C for domestic use, $T_{cond}$ is constrained to be approximately 60\textdegree C. Determining the optimal, steady state evaporation temperature on which to base the collector design is key, not only to optimizing the flat plate collector’s area, but also to minimizing the radiative and convective heat losses emanating from its surfaces. Closely tied to the ambient temperatures, the evaporation temperatures of the working fluid circulating within the collector’s manifold dictate the useful heat gain of the collector or, more specifically, the efficiency of the collector, and correspondingly, the $COP$ of the overall system. Referring to ASHRAE’s heat pump \& air conditioning design conditions for Calgary, an initial range of design evaporation temperatures between -10\textdegree C and 10\textdegree C was selected.
 
 \medskip
-Additionally, meteorological data sets encapsulating average, hourly, winter-day temperatures and Irradiance values were loaded into the MATLAB [36] file. Using a C++ Fluid Properties’, MATLAB-accessible library, CoolProp [18], the thermodynamic states of the Refrigerant R410A, including temperatures, pressures, enthalpy, and entropy, were determined for points 1 through 4 of the thermodynamic cycle. As depicted in Figure 3.3, the isobar between on which states 2-3 lie represents the set, saturation pressure corresponding to the design condensation temperature of 60\textdegree C. The collection of dashed isobars on which states 4-1 lie correspond to the saturation pressures of the chosen range of evaporation temperatures to undergo analysis. To simplify the analysis, the following assumptions of the thermodynamic cycle were made:
+Additionally, meteorological data sets encapsulating average, hourly, winter-day temperatures and Irradiance values were loaded into the MATLAB \cite{MATLAB} file. Using a C++ Fluid Properties’, MATLAB-accessible library, CoolProp \cite{cool_prop}, the thermodynamic states of the Refrigerant R410A, including temperatures, pressures, enthalpy, and entropy, were determined for points 1 through 4 of the thermodynamic cycle. As depicted in Figure 3.3, the isobar between on which states 2-3 lie represents the set, saturation pressure corresponding to the design condensation temperature of 60\textdegree C. The collection of dashed isobars on which states 4-1 lie correspond to the saturation pressures of the chosen range of evaporation temperatures to undergo analysis. To simplify the analysis, the following assumptions of the thermodynamic cycle were made:
 
 \newpage
 \begin{enumerate}[itemsep=3mm, parsep=-1mm, label=\roman*.]
@@ -233,10 +233,10 @@ Once the flat plate’s mean temperature was determined, the collector’s usefu
 
 \subsection{Insulation Selection}
 
-Insulation is one of the most efficient ways to save energy by reducing heat loss during winter and thus lowering energy bills [36]. Reducing heat loss in the collector means the compressor will have to do less work to meet the hot water requirements. For the flat plate collector, it was essential to investigate the concepts pertaining to location of any heat losses to the surroundings, type, thickness, and cost of insulation.
+Insulation is one of the most efficient ways to save energy by reducing heat loss during winter and thus lowering energy bills \cite{insulation}. Reducing heat loss in the collector means the compressor will have to do less work to meet the hot water requirements. For the flat plate collector, it was essential to investigate the concepts pertaining to location of any heat losses to the surroundings, type, thickness, and cost of insulation.
 
 \medskip
-In the solar flat plate collector, heat losses occur through the absorber plate by top losses. As the plate heats up, some of this heat is then transferred to R-410A (within the copper tubing of the collector that is brazed beneath and to the aluminum absorber plate), while some of the heat being lost to its surroundings. The heat losses occurring through the back, and sides of the collector are respectively known as bottom and edge losses [36]. From heat transfer and thermodynamic contexts, it is understood that these heat losses occur in the form of conduction, convection, and radiation [36].
+In the solar flat plate collector, heat losses occur through the absorber plate by top losses. As the plate heats up, some of this heat is then transferred to R-410A (within the copper tubing of the collector that is brazed beneath and to the aluminum absorber plate), while some of the heat being lost to its surroundings. The heat losses occurring through the back, and sides of the collector are respectively known as bottom and edge losses \cite{heat_losses}. From heat transfer and thermodynamic contexts, it is understood that these heat losses occur in the form of conduction, convection, and radiation \cite{heat_losses}.
 
 \medskip
 Based on the engineering analysis and design of the collector, the bottom and sides require insulation as to minimize any heat losses and the consideration of an insulation cover being required in case of probable exposure area that is responsible for the occurrence of any heat losses.
@@ -254,7 +254,7 @@ The insulation materials representative of some of the materials commonly used i
 \end{itemize}
 
 \newpage
-The following table represents the range of thermal conductivity values, temperature, and R-values [37] for the mentioned types of insulation materials.
+The following table represents the range of thermal conductivity values, temperature, and R-values \cite{thermal_insulation} for the mentioned types of insulation materials.
 
 \medskip
 \begin{table}[H]
@@ -276,7 +276,7 @@ The following table represents the range of thermal conductivity values, tempera
 \end{table}
 
 \medskip
-The following table identifies the American Society for Testing and Materials (ASTM) specification, material type, and/or grade for some of the insulation materials that are commonly used in the industry [38].
+The following table identifies the American Society for Testing and Materials (ASTM) specification, material type, and/or grade for some of the insulation materials that are commonly used in the industry \cite{insulation_design}.
 
 \medskip
 \begin{table}[H]
@@ -301,7 +301,7 @@ The following table identifies the American Society for Testing and Materials (A
 \end{table}
 
 \medskip
-Based on the above analysis, mineral wool was selected as the insulating material to be used for the solar flat plate collector due to its excellent thermal properties. Mineral wool has low thermal conductivity values, allowing for less heat to be passed through and lost to the surroundings. The suitable temperature range allows for use up to 649\textdegree C as this material will not melt until temperatures reach beyond 1,000\textdegree C. The R-values are within a range of R-3.7-R-4.3, allowing for it to suitably resist heat flow. In addition, mineral wool is naturally moisture resistant [39].
+Based on the above analysis, mineral wool was selected as the insulating material to be used for the solar flat plate collector due to its excellent thermal properties. Mineral wool has low thermal conductivity values, allowing for less heat to be passed through and lost to the surroundings. The suitable temperature range allows for use up to 649\textdegree C as this material will not melt until temperatures reach beyond 1,000\textdegree C. The R-values are within a range of R-3.7-R-4.3, allowing for it to suitably resist heat flow. In addition, mineral wool is naturally moisture resistant \cite{mineral_wool}.
 
 \newpage
 \subsection{Glazing Selection}
@@ -319,10 +319,10 @@ Glazing refers to the top cover of the solar collector. It has three main purpos
 The two main materials used for solar collector glazing are glass and polycarbonate.
 
 \medskip
-The main parameter to consider when choosing the glazing is the transmittance. Transmissivity is a measure of how much light passes through the object for a given wavelength. For a solar collector, the glazing should let through as much sunlight as possible but be opaque to the infrared radiation emitted by the absorber plate. This will allow for the most heat gain possible. The secondary parameters which should be minimized are the absorptance and reflectance of the glazing. The absorptivity is a measure of how much radiation is absorbed for a given wavelength and reflectivity is how much is reflected [40].
+The main parameter to consider when choosing the glazing is the transmittance. Transmissivity is a measure of how much light passes through the object for a given wavelength. For a solar collector, the glazing should let through as much sunlight as possible but be opaque to the infrared radiation emitted by the absorber plate. This will allow for the most heat gain possible. The secondary parameters which should be minimized are the absorptance and reflectance of the glazing. The absorptivity is a measure of how much radiation is absorbed for a given wavelength and reflectivity is how much is reflected \cite{emissivity}.
 
 \medskip
-Another important factor to consider is the solar heat gain coefficient (SHGC). The SHGC is a measure of how much solar radiation is admitted. A high SHGC rating indicates that the materials are more effective at collecting solar heat, which is better for a solar collector [41].
+Another important factor to consider is the solar heat gain coefficient (SHGC). The SHGC is a measure of how much solar radiation is admitted. A high SHGC rating indicates that the materials are more effective at collecting solar heat, which is better for a solar collector \cite{epri}.
 
 \medskip
 \begin{table}[H]
@@ -332,30 +332,30 @@ Another important factor to consider is the solar heat gain coefficient (SHGC). 
 \begin{tabular}{|P{31mm}|P{23mm}|P{23mm}|P{10mm}|P{34mm}|P{17mm}|}
     \hline
     \rowcolor{orangeRed}
-    Glazing Type & Temperature Range & Transmissivity & SHGC [42][43] & Thermal Expansion Coefficient $(in/in/F)$ & Density $(kg/m^3)$ \\
+    Glazing Type & Temperature Range & Transmissivity & SHGC \cite{glass_glazing}\cite{polycarbonate_glazing} & Thermal Expansion Coefficient $(in/in/F)$ & Density $(kg/m^3)$ \\
     \hline
-    Low Iron Tempered Glass [44]  & -50\textdegree C to 240\textdegree C & 91.5\% & $\sim 0.91$ & 4.9E-6  & 2530 \\
-    Polycarbonate (Standard) [45] & -50\textdegree C to 120\textdegree C & 86\%   & $\sim 0.80$ & 3.75E-5 & 1197 \\
-    Sun-Lite [46]                 & -50\textdegree C to 120\textdegree C & 86\%   & $\sim 0.80$ & 3.6E-5  & 1200 \\
-    Lexan 9034 [47]               & -40\textdegree C to 100\textdegree C & 88\%   & $\sim 0.80$ & 3.75E-5 & 1197 \\
-    SunTuf [48]                   & -40\textdegree C to 100\textdegree C & 90\%   & $\sim 0.80$ & 3.6E-5  & 1200 \\
+    Low Iron Tempered Glass \cite{low_iron_glass}  & -50\textdegree C to 240\textdegree C & 91.5\% & $\sim 0.91$ & 4.9E-6  & 2530 \\
+    Polycarbonate (Standard) \cite{polycarbonate} & -50\textdegree C to 120\textdegree C & 86\%   & $\sim 0.80$ & 3.75E-5 & 1197 \\
+    Sun-Lite \cite{fiberglass}                 & -50\textdegree C to 120\textdegree C & 86\%   & $\sim 0.80$ & 3.6E-5  & 1200 \\
+    Lexan 9034 \cite{lexan}               & -40\textdegree C to 100\textdegree C & 88\%   & $\sim 0.80$ & 3.75E-5 & 1197 \\
+    SunTuf \cite{suntuf}                   & -40\textdegree C to 100\textdegree C & 90\%   & $\sim 0.80$ & 3.6E-5  & 1200 \\
     \hline
 \end{tabular}
 \end{table}
 
 \medskip
-As seen from Table 4 above, all the materials found met the temperature requirement of -30\textdegree C to 30\textdegree C. Low iron tempered glass was found to have the highest transmissivity, highest solar heat gain coefficient, and lowest coefficient of thermal expansion. Glass was found to be more opaque to the long wave radiation emitted by the absorber plate, and therefore better at trapping heat [49]. Whereas polycarbonate was found to transmit more IR radiation [50]. Additionally, polycarbonate will yellow over time from exposure to UV rays [51]; this will reduce the amount of light transmitted by it. However, glass is more than two times heavier than the polycarbonate sheets and more prone to breaking. So extra care will need to be taken when installing it in the collector.
+As seen from Table 4 above, all the materials found met the temperature requirement of -30\textdegree C to 30\textdegree C. Low iron tempered glass was found to have the highest transmissivity, highest solar heat gain coefficient, and lowest coefficient of thermal expansion. Glass was found to be more opaque to the long wave radiation emitted by the absorber plate, and therefore better at trapping heat \cite{low_iron_glass_vs_regular}. Whereas polycarbonate was found to transmit more IR radiation \cite{plexiglass}. Additionally, polycarbonate will yellow over time from exposure to UV rays \cite{polycarbonate_yellowing}; this will reduce the amount of light transmitted by it. However, glass is more than two times heavier than the polycarbonate sheets and more prone to breaking. So extra care will need to be taken when installing it in the collector.
 
 \subsection{Plate Material Selection}
 
-The absorber plate is the component which absorbs solar radiation and emits it as infrared radiation. This heat is then absorbed by the copper piping and then the refrigerant. For this purpose, the plate must have high absorptivity, heat conductivity, and emissivity. The most common materials for the absorber plate are copper, aluminum, and steel; the thermal conductivities of these metals are $398 W/mK$, $247 W/mK$, and $45 W/mK$ respectively [52] [53]. Steel was found to have too low thermal conductivity for this application. The price of copper was \$9.55/kg [54] and aluminum was \$6.33/kg [55]. Aluminum was selected for our application because it was more readily available.
+The absorber plate is the component which absorbs solar radiation and emits it as infrared radiation. This heat is then absorbed by the copper piping and then the refrigerant. For this purpose, the plate must have high absorptivity, heat conductivity, and emissivity. The most common materials for the absorber plate are copper, aluminum, and steel; the thermal conductivities of these metals are $398 W/mK$, $247 W/mK$, and $45 W/mK$ respectively \cite{thermally_conductive_materials} \cite{thermal_conductivity_of_steel}. Steel was found to have too low thermal conductivity for this application. The price of copper was \$9.55/kg \cite{copper_prices} and aluminum was \$6.33/kg \cite{aluminum_prices}. Aluminum was selected for our application because it was more readily available.
 
 \medskip
-A selective coating will be applied to the absorber plate to increase the amount of sunlight absorbed. The coating should have high absorbance and low emissivity, so all the absorbed heat will be transferred to the aluminum plate. It should also be able to withstand high temperatures and be UV resistant. Thurmalox 250 was identified as a coating specifically suited for solar thermal collector application [56].
+A selective coating will be applied to the absorber plate to increase the amount of sunlight absorbed. The coating should have high absorbance and low emissivity, so all the absorbed heat will be transferred to the aluminum plate. It should also be able to withstand high temperatures and be UV resistant. Thurmalox 250 was identified as a coating specifically suited for solar thermal collector application \cite{high_temp_coating}.
 
 \subsection{Manifold Design}
 
-To determine the copper tube design beneath the absorber plate of the solar flat plate collector, it was convenient to create a two-dimensional drawing to determine the layout. The design of the tubing helped determine the overall length of tubing that would be required. A serpentine tube design was selected as it maximizes the amount of surface area, and for R-410A, for heat transfer to occur within a limited amount of space [57].
+To determine the copper tube design beneath the absorber plate of the solar flat plate collector, it was convenient to create a two-dimensional drawing to determine the layout. The design of the tubing helped determine the overall length of tubing that would be required. A serpentine tube design was selected as it maximizes the amount of surface area, and for R-410A, for heat transfer to occur within a limited amount of space \cite{serpentine_bending}.
 
 \medskip
 The serpentine copper tube design for the flat plate collector was completed based upon the following criteria:
@@ -412,7 +412,7 @@ For component matching, external to the solar flat plate collector, suitable com
 
 \subsection{Compressor Selection}
 
-A compressor is required after the collector to meet the domestic hot water requirements. A hermetically sealed compressor is ideal for domestic heat pump systems. The compressor will be a single stage, rotary vane, positive displacement compressor. The motor will be a single phase, variable speed motor. The compressor must operate within the specified voltage of approximately 110/120 V and 50-60 Hz [58]. In the case where it is greater, further in-depth investigation into transformers [59] [60] or power amplifiers is required to overcome this difference.
+A compressor is required after the collector to meet the domestic hot water requirements. A hermetically sealed compressor is ideal for domestic heat pump systems. The compressor will be a single stage, rotary vane, positive displacement compressor. The motor will be a single phase, variable speed motor. The compressor must operate within the specified voltage of approximately 110/120 V and 50-60 Hz \cite{power_plugs}. In the case where it is greater, further in-depth investigation into transformers \cite{canada_voltage} \cite{valve_selection} or power amplifiers is required to overcome this difference.
 
 \medskip
 The compressor selection is based on the lowest evaporating temperature of -10°C. To obtain a condensation temperature of 60\textdegree C, the pressure differential needs to be controlled via the motor speed.
@@ -441,11 +441,11 @@ The following figure shows what the hermetic variable speed compressor looks lik
 \begin{figure}[H]
     \centering
     \includegraphics[width=8cm]{images/var_speed_compressor.png}
-    \caption{Hermetic Variable Speed Compressor [61]}
+    \caption{Hermetic Variable Speed Compressor \cite{variable_speed_drives}}
 \end{figure}
 
 \medskip
-The compatibility between the hermetic variable speed compressor and electronic expansion valve is crucial as this controls the pressure differential of R-410A through the compressor and the amount of flow rate through the valve. Vendors have been provided the design specifications, controller requirements, and refrigerant parameters to size these components. The copper piping, having a diameter of 0.75 inches, is to be connected to the suction and discharge of the compressor and valve. The determination of the diameters and materials of these lines are being communicated with the vendor as to allow the easiest route for metal-joining and installation purposes. The two choices, as of now, to connect the external piping to the suction/discharge lines of both the compressor and valve, can either be done by brazing the copper piping to the connecting tubes and/or by use of a copper adapter tube [62]. The use of an adapter tube allows for the connection of the suction/discharge connector to be connected to the external piping without the need of expanding the connectors or reducing the diameters of the connection tubes.
+The compatibility between the hermetic variable speed compressor and electronic expansion valve is crucial as this controls the pressure differential of R-410A through the compressor and the amount of flow rate through the valve. Vendors have been provided the design specifications, controller requirements, and refrigerant parameters to size these components. The copper piping, having a diameter of 0.75 inches, is to be connected to the suction and discharge of the compressor and valve. The determination of the diameters and materials of these lines are being communicated with the vendor as to allow the easiest route for metal-joining and installation purposes. The two choices, as of now, to connect the external piping to the suction/discharge lines of both the compressor and valve, can either be done by brazing the copper piping to the connecting tubes and/or by use of a copper adapter tube \cite{exv_selection}. The use of an adapter tube allows for the connection of the suction/discharge connector to be connected to the external piping without the need of expanding the connectors or reducing the diameters of the connection tubes.
 
 \subsection{Condenser Selection}
 
@@ -470,7 +470,7 @@ Proper sizing of the condenser will be important in ensuring the conditions of t
 \begin{figure}[H]
     \centering
     \includegraphics[width=6 cm]{images/water_tank_condenser.jpg}
-    \caption{Water Tank with Two Condensing Coils [63]}
+    \caption{Water Tank with Two Condensing Coils \cite{water_tank_selection}}
 \end{figure}
 
 \subsection{Electronic Expansion Valve Selection}
@@ -487,7 +487,7 @@ Selection of electronic expansion valves (EXV) is based on the following criteri
 Firstly, the selected valve must be compatible with the chosen refrigerant (i.e., R-410A).
 
 \medskip
-Secondly, the expansion valve must be able to provide the needed pressure reduction for system parameters. This is usually given by a vendor through an EXV’s capacity rating, which references the system’s heat removal rate in kW. Vendors provide a capacity rating for the following refrigerant conditions, based on AHRI standards [64]:
+Secondly, the expansion valve must be able to provide the needed pressure reduction for system parameters. This is usually given by a vendor through an EXV’s capacity rating, which references the system’s heat removal rate in kW. Vendors provide a capacity rating for the following refrigerant conditions, based on AHRI standards \cite{exv_performance}:
 
 \medskip
 \begin{table}[H]
@@ -520,7 +520,7 @@ Since these operating conditions differ from the ones in the DX-SAHP, a correcti
 \end{enumerate}
 
 \medskip
-All vendors include data sheets that specify the correction factors that must be used for their valve selection. The chosen valve was from manufacturer Danfoss who provided the following table [65] to aid in correction factor selection.
+All vendors include data sheets that specify the correction factors that must be used for their valve selection. The chosen valve was from manufacturer Danfoss who provided the following table \cite{exv_types} to aid in correction factor selection.
 
 \medskip
 \begin{table}[H]
@@ -545,25 +545,25 @@ From Table 3.5, it can be seen that a correction factor of 1.06 must be used on 
 Thus $COP_{corrected}$ can be compared with ratings provided by the vendor at the system’s $T_{evap}$ and $T_{cond}$, to find to find an appropriate expansion valve.
 
 \medskip
-From this process it was found that the Danfoss ETS 6-10 [65] satisfied the needed capacity with a sufficient safety factor, being able to provide a capacity of $2.9 kW$ at the specified $T_{evap}$ and $T_{cond}$. For a full list of the vendor data sheets that were considered during EXV selection, please see the Electronic Expansion Valve selection document in the Design Binder.
+From this process it was found that the Danfoss ETS 6-10 \cite{exv_types} satisfied the needed capacity with a sufficient safety factor, being able to provide a capacity of $2.9 kW$ at the specified $T_{evap}$ and $T_{cond}$. For a full list of the vendor data sheets that were considered during EXV selection, please see the Electronic Expansion Valve selection document in the Design Binder.
 
 \subsection{Piping}
 
 Piping is an essential part of a heat pump; it carries the energy gained by the collector and compressor to be released in the condenser. A preliminary analysis was done to determine the drop in pressure between major components in the system. This pressure drop was considered to be from friction in the pipe, elbows, and changes in height. The variable definitions for all the equations below can be found in Appendix A.
 
 \medskip
-The equation for pressure drop due to friction in a circular pipe is given as [66]:
+The equation for pressure drop due to friction in a circular pipe is given as \cite{fluid_mechanics}:
 \begin{align}
     \Delta P_f = \ddfrac{fL_p \rho w^2}{2D_i}
 \end{align}
 
 \medskip
-The friction factor, f, is calculated separately for laminar and turbulent flows; however, in this system, only turbulent flows were found. For turbulent flow, the Colebrook White equation [66] was used to calculate the friction factor. This was solved by moving all terms to one side and using the \verb|fzero| MATLAB [35] function to iteratively solve for the friction factor.
+The friction factor, f, is calculated separately for laminar and turbulent flows; however, in this system, only turbulent flows were found. For turbulent flow, the Colebrook White equation \cite{fluid_mechanics} was used to calculate the friction factor. This was solved by moving all terms to one side and using the \verb|fzero| MATLAB \cite{MATLAB} function to iteratively solve for the friction factor.
 \begin{align}
     \frac{1}{\sqrt{f}} = -2.0log\left( \ddfrac{\frac{e}{D_i}}{3.7} + \frac{2.51}{Re\sqrt{f}}\right) 
 \end{align}
 
-The Reynold’s number determines the type of flow (i.e., Laminar, turbulent, or transitioning). If greater than 2320, the flow was considered turbulent. The Reynold’s Number was calculated as [66]:
+The Reynold’s number determines the type of flow (i.e., Laminar, turbulent, or transitioning). If greater than 2320, the flow was considered turbulent. The Reynold’s Number was calculated as \cite{fluid_mechanics}:
 \begin{align}
     Re = \ddfrac{wD_i}{\nu} = \ddfrac{\rho w D_i}{\mu}
 \end{align}
@@ -612,16 +612,16 @@ As seen from Figure 3.10 above, the pressure drop in the \nicefrac{1}{4} inch pi
 As seen from Figures 3.10 \& 3.11 above, as the diameter of the piping decreased, the pressure drop per meter increased drastically. Based on these values however, the pressure drop due to friction for diameters greater than \nicefrac{1}{4}” is insignificant considering the system operating pressures that range from $750kPa$ – $3800kPa$.
 
 \medskip
-The pressure drop due to elbows was calculated as follows [66]:
+The pressure drop due to elbows was calculated as follows \cite{fluid_mechanics}:
 \begin{align}
     \Delta P_e = \ddfrac{K_L \rho w^2}{2}
 \end{align}
 
 \medskip
-$K_L$ is the loss coefficient of the specified component or elbow. The loss coefficient for a long radius 90\textdegree \ flanged elbow is 0.2 and the loss coefficient for a regular 90\textdegree \ threaded elbow is 1.5 [66].
+$K_L$ is the loss coefficient of the specified component or elbow. The loss coefficient for a long radius 90\textdegree \ flanged elbow is 0.2 and the loss coefficient for a regular 90\textdegree \ threaded elbow is 1.5 \cite{fluid_mechanics}.
 
 \medskip
-The pressure drop due to a change in height was calculated as [66]:
+The pressure drop due to a change in height was calculated as \cite{fluid_mechanics}:
 \begin{align}
     \Delta P = \rho g \Delta z
 \end{align}
@@ -661,22 +661,22 @@ Based on Figures 3.12 - 3.15, using a \nicefrac{1}{4}" copper pipe would result 
 
 \subsubsection{Accumulator}
 
-A suction line accumulator is used to prevent any liquid from entering the compressor. If all the refrigerant exiting the collector is not vaporized, there is potential for liquid refrigerant to enter the compressor. Since this system uses a vapor compressor, any liquid refrigerant entering it will damage it. Additionally, the compressor is not modular, and any damage will require a full replacement, so protecting it is a necessity. An accumulator works by using a U-tube to trap any liquid refrigerant and only allowing vapor to flow to the compressor. The accumulator must be able to contain approximately seventy percent of the total refrigerant charge [67]. Additionally, during normal compressor operation, a small amount of oil from the compressor’s components will enter the piping; the accumulator also serves the purpose of collecting and returning this oil back to the compressor. To prevent any vapor from reaching the compressor, the accumulator is installed before the compressor [68].
+A suction line accumulator is used to prevent any liquid from entering the compressor. If all the refrigerant exiting the collector is not vaporized, there is potential for liquid refrigerant to enter the compressor. Since this system uses a vapor compressor, any liquid refrigerant entering it will damage it. Additionally, the compressor is not modular, and any damage will require a full replacement, so protecting it is a necessity. An accumulator works by using a U-tube to trap any liquid refrigerant and only allowing vapor to flow to the compressor. The accumulator must be able to contain approximately seventy percent of the total refrigerant charge \cite{sporlan}. Additionally, during normal compressor operation, a small amount of oil from the compressor’s components will enter the piping; the accumulator also serves the purpose of collecting and returning this oil back to the compressor. To prevent any vapor from reaching the compressor, the accumulator is installed before the compressor \cite{accumulator}.
 
 \medskip
 \begin{figure}[H]
     \centering
     \includegraphics[width=3.5cm]{images/accumulator.jpg}
-    \caption{Suction Line Accumulator [69]}
+    \caption{Suction Line Accumulator \cite{accumulator_basics}}
 \end{figure}
 
 \subsubsection{Filter Drier}
 
-To keep the system working at optimal conditions, it is necessary to ensure that there are as little contaminants as possible. The potential contaminants in this system are water, copper shavings, or other contaminants during installation. The filter drier ensures these contaminants are not circulated throughout the system and causing damage; it is installed in the liquid-line of the heat pump before the sight glass [70].
+To keep the system working at optimal conditions, it is necessary to ensure that there are as little contaminants as possible. The potential contaminants in this system are water, copper shavings, or other contaminants during installation. The filter drier ensures these contaminants are not circulated throughout the system and causing damage; it is installed in the liquid-line of the heat pump before the sight glass \cite{sight_glass}.
 
 \subsubsection{Sight Glass}
 
-The sight glass is needed to view the level of the refrigerant to ensure proper operation. If there are bubbles seen through the sight glass it indicates that there is not enough refrigerant in the system. Additionally, the refrigerant must be subcooled before entering the EXV; therefore, the sight glass is installed before the EXV to ensure only liquid enters it [71].
+The sight glass is needed to view the level of the refrigerant to ensure proper operation. If there are bubbles seen through the sight glass it indicates that there is not enough refrigerant in the system. Additionally, the refrigerant must be subcooled before entering the EXV; therefore, the sight glass is installed before the EXV to ensure only liquid enters it \cite{sight_glass_install}.
 
 \section{Control System}
 
@@ -696,7 +696,7 @@ To ensure the heat load requirements are constantly being met, the system must c
 Firstly, the mass flow rate of the refrigerant dictates how fast the refrigerant is flowing through the system. It is critical that the refrigerant enters the compressor as at least a saturated vapor, as any liquid-vapor mixture will damage the compressor. To ensure that full saturation is achieved, the refrigerant must spend enough time in the solar collector that it is able to fully change phase. The time spent in the collector is directly linked to mass flow rate and thus it is critical that this parameter be controlled. For example, during colder conditions where there is less available sunlight, the system needs to be able to lower the flow rate so that the refrigerant can spend more time in the collector to completely changing phase.
 
 \medskip
-Mass flow rate will be controlled by the electronic expansion valve. There is a stepper motor in the valve that incrementally opens and closes the valve opening, to adjust the flow rate. This stepper motor responds to electronic signals that will be fed by an external controller. The Danfoss controller [72] was selected as it is compatible with the system’s chosen electronic expansion valve. The controller input parameters include the refrigerant type, and the solar collector exit temperature and pressure. The temperature and pressure measurements will be given by an AKS model temperature sensor and an AKS 32R pressure transmitter, which are recommended from the controller’s operator’s manual [72]. The controller must optimize between ensuring that the refrigerant is at least a saturated vapor as it exits the collector, while still reducing the amount of superheat if possible. This is because excessive superheating at the outlet of the collector is an indicator that there is not enough refrigerant passing through and the mass flow rate should be increased. If the mass flow rate is needlessly low, the collector plate average temperature will increase, and $COP$ of the system will fall.
+Mass flow rate will be controlled by the electronic expansion valve. There is a stepper motor in the valve that incrementally opens and closes the valve opening, to adjust the flow rate. This stepper motor responds to electronic signals that will be fed by an external controller. The Danfoss controller \cite{controller} was selected as it is compatible with the system’s chosen electronic expansion valve. The controller input parameters include the refrigerant type, and the solar collector exit temperature and pressure. The temperature and pressure measurements will be given by an AKS model temperature sensor and an AKS 32R pressure transmitter, which are recommended from the controller’s operator’s manual \cite{controller}. The controller must optimize between ensuring that the refrigerant is at least a saturated vapor as it exits the collector, while still reducing the amount of superheat if possible. This is because excessive superheating at the outlet of the collector is an indicator that there is not enough refrigerant passing through and the mass flow rate should be increased. If the mass flow rate is needlessly low, the collector plate average temperature will increase, and $COP$ of the system will fall.
 
 \begin{figure}[H]
     \centering
