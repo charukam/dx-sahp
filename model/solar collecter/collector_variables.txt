@@ -1,0 +1,15 @@
+﻿"absorber_plate_width" = 1100mm
+"absorber_plate_length" = 2100mm
+"absorber_plate_thickness" = .1875in
+"groove_depth" = 20mm
+"frame_thickness" = 60mm
+"insulation_thickness" = 50mm
+"glass_thickness" = 3mm
+"pipe_distances" = 100mm
+"pipe_OD" = 0.3125in
+"pipe_ID" = 0.249in
+"pipe_straight_length" = 900mm
+"absorber_to_glass" = 25mm
+"serpentine_length" = 1900mm
+"wood_width" = 3.5in
+"wood_height" = 1.5in
