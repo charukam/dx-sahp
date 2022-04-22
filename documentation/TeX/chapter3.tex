@@ -1,10 +1,10 @@
-\chapter{Conceptual Design}
+\chapter{Design Development}
 
-\section{Collector Analysis}
+\section{Collector Engineering Analysis}
 
 \subsection{Heat Transfer Analysis}
 
-To model the heat transfer, depicted in Figure 3.1, occurring on the surfaces of a flat plate collector, the following simplifications can be made:
+To model the heat transfer, depicted in Figure 3.1, occurring on the surfaces of a flat plate collector, the following simplifications were made:
 
 \medskip
 \begin{itemize}[itemsep=3mm, parsep=-1mm]
@@ -32,7 +32,7 @@ To model the heat transfer, depicted in Figure 3.1, occurring on the surfaces of
 \end{figure}
 
 \medskip
-The heat losses can be analytically simplified by representing the heat transfer from the collector’s absorber plate through collector’s cover at the top, and insulation at the back and subsequently, to the ambient as the thermal network depicted in Figure 3.2a. An equivalent thermal network, as shown in Figure 3.2b, can then be deduced to encompass the overall steady-state heat transfer occurring across the collector. The heat transfer analysis is derived in full detail below.
+The heat losses were analytically simplified by characterizing them using the thermal network depicted in Figure 3.2a. An equivalent thermal network, as shown in Figure 3.2b, can then be deduced to encompass the overall steady-state heat transfer occurring across the collector. The heat transfer analysis is derived in full detail below.
 
 \smallskip
 \begin{figure}[H]
@@ -44,7 +44,7 @@ The heat losses can be analytically simplified by representing the heat transfer
 \end{figure}
 
 \medskip
-First, the top heat losses, both convective and radiative, from the absorber plate to the cover can be evaluated as follows to determine the first thermal resistance, R1:
+First, the top heat losses, both convective and radiative, from the absorber plate to the cover were  evaluated as follows to determine the first thermal resistance, R1:
 \begin{align}
     Q_{loss, top} = h_{c, p-c}(T_{pm}-T_c) + \ddfrac{\sigma(T^4_{pm}-T^4_c)}{\frac{1}{\varepsilon_p} + \frac{1}{\varepsilon_c} - 1}
 \end{align}
@@ -58,7 +58,7 @@ First, the top heat losses, both convective and radiative, from the absorber pla
 \end{align}
 
 \bigskip
-Similarly, the top heat loss, both convective and radiative, from the cover to the ambient can be evaluated as follows to determine the second thermal resistance, R2:
+Similarly, the top heat losses, both convective and radiative, from the cover to the ambient were evaluated as follows to determine the second thermal resistance, R2:
 \begin{align}
     h_{r,c-a} = \ddfrac{\sigma\varepsilon_c (T_c + T_{sky})(T_c^2 + T_{sky}^2)(T_c - T_{sky})}{(T_c - T_a)}
 \end{align}
@@ -68,7 +68,7 @@ Similarly, the top heat loss, both convective and radiative, from the cover to t
 \end{align}
 
 \bigskip
-Finally, the total top heat loss coefficient, $U_{top}$, is found to be the inverse of the summation of R1 and R2 as follows:
+Finally, the total top heat loss coefficient, $U_{top}$, was found to be the inverse of the summation of R1 and R2 as follows:
 \begin{align}
     U_{top} = \ddfrac{1}{R1 + R2}
 \end{align}
@@ -79,8 +79,7 @@ A useful empirical equation for $U_{top}$ was developed by Klein (1979) followin
     U_{top} = U_{tC} + U_{tR}
 \end{align}
 
-\newpage
-The heat loss through convective effects, $U_{tC}$, can be quantified as: 
+The heat loss through convective effects, $U_{tC}$, was quantified as: 
 \begin{align}
     U_{tC} = \left[  \ddfrac{M}{\left(\frac{c}{T_{pm}}\right) \left( \frac{T_{pm} - T_a}{M+f} \right)^e} + \ddfrac{1}{h_w} \right]^{-1}
 \end{align}
@@ -95,7 +94,7 @@ Where:
 \end{align}
 
 \bigskip
-The heat loss through radiative effects, $U_{tR}$, can be quantified as:
+The heat loss through radiative effects, $U_{tR}$, was quantified as:
 \begin{align}
     U_{tR} = \ddfrac{\sigma (T_{pm}^2 + T_a^2) (T_{pm} + T_a)}{(\varepsilon_p + 0.059Mh_w)^{-1} + \frac{2M + f - 1 + 0.133\varepsilon_p}{\varepsilon_g} - M}    
 \end{align}
@@ -115,7 +114,6 @@ The heat loss through the bottom, $U_b$, of the collector can be defined as:
     U_{bottom} = \frac{1}{R} = \frac{\delta_1}{k_1}
 \end{align}
 
-\newpage
 The heat loss through the sides, $U_{edge}$, of the collector can be defined as:
 \begin{align}
     U_{edge} = \ddfrac{Q_{edge}}{A(T_{pm} - T_a)}
@@ -139,13 +137,13 @@ The total heat loss coefficient is the sum of the heat loss coefficients for the
 \end{align}
 
 \bigskip
-Finally, the total useful heat gain of the collector can be quantified as:
+Finally, the total useful heat gain of the collector was quantified as:
 \begin{align}
     Q_u = F'A_c\left[ I(\uptau_c \alpha_c) - U_L(T_{fi} - T_a) \right]
 \end{align}
 
 \bigskip
-The fin efficiency represents the represents the efficacy with which energy absorbed by the absorber plate and the tube spacing (conceptualized as fins) is collected on the sides of the tubes for subsequent heat transfer into the working fluid:
+The fin efficiency represents the efficacy with which energy absorbed by the abosrber plate and the tube spacing (conceptualized as fins) is collected on the sides of the tubes for subsequent heat transfer into the working fluid:
 \begin{align}
     F = \ddfrac{tanh \left[ \ddfrac{m(W-D)}{2}\right]}{\left[ \ddfrac{m(W-D}{2}\right]}
 \end{align}
@@ -195,9 +193,8 @@ As seen in the equations above, the absorber plate’s mean temperature is impor
 In thermodynamics, heat pump cycles are bound by two reservoir temperatures, namely, the evaporation and the condensation temperatures. For the purposes of the system, the condensation temperature is regarded as a set point: since the system is designed to support an outlet water temperature of 55\textdegree C for domestic use, $T_{cond}$ is constrained to be approximately 60\textdegree C. Determining the optimal, steady state evaporation temperature on which to base the collector design is key, not only to optimizing the flat plate collector’s area, but also to minimizing the radiative and convective heat losses emanating from its surfaces. Closely tied to the ambient temperatures, the evaporation temperatures of the working fluid circulating within the collector’s manifold dictate the useful heat gain of the collector or, more specifically, the efficiency of the collector, and correspondingly, the $COP$ of the overall system. Referring to ASHRAE’s heat pump \& air conditioning design conditions for Calgary, an initial range of design evaporation temperatures between -10\textdegree C and 10\textdegree C was selected.
 
 \medskip
-Additionally, meteorological data sets encapsulating average, hourly, winter-day temperatures and Irradiance values were loaded into the MATLAB \cite{MATLAB} file. Using a C++ Fluid Properties’, MATLAB-accessible library, CoolProp \cite{cool_prop}, the thermodynamic states of the Refrigerant R410A, including temperatures, pressures, enthalpy, and entropy, were determined for points 1 through 4 of the thermodynamic cycle. As depicted in Figure 3.3, the isobar between on which states 2-3 lie represents the set, saturation pressure corresponding to the design condensation temperature of 60\textdegree C. The collection of dashed isobars on which states 4-1 lie correspond to the saturation pressures of the chosen range of evaporation temperatures to undergo analysis. To simplify the analysis, the following assumptions of the thermodynamic cycle were made:
+Additionally, meteorological data sets encapsulating average, hourly, winter-day temperatures and Irradiance values were loaded into the MATLAB \cite{MATLAB} file. Using a C++ Fluid Properties’, MATLAB-accessible library, CoolProp \cite{cool_prop}, the thermodynamic states of the Refrigerant R134A, including temperatures, pressures, enthalpy, and entropy, were determined for points 1 through 4 of the thermodynamic cycle. As depicted in Figure 3.3, the isobar between on which states 2-3 lie represents the set, saturation pressure corresponding to the design condensation temperature of 60\textdegree C. The collection of dashed isobars on which states 4-1 lie correspond to the saturation pressures of the chosen range of evaporation temperatures to undergo analysis. To simplify the analysis, the following assumptions of the thermodynamic cycle were made:
 
-\newpage
 \begin{enumerate}[itemsep=3mm, parsep=-1mm, label=\roman*.]
     \item Constant pressure heat addition occurs in the collector.
     \item Constant pressure heat rejection occurs in the condenser.
@@ -229,14 +226,12 @@ Using CoolProp [18], the team determined the performance parameters of the isola
 \medskip
 Once the flat plate’s mean temperature was determined, the collector’s useful heat gain, and, subsequently, the collector’s efficiency was evaluated for every data point in the evaporation temperature range. The evaporation temperature’s impact on the isolated heat pump cycle $COP$ is diametrically opposed to its impact on the useful heat gain of the collector: on one hand, the $COP$ of the heat pump cycle increases as the gap between the evaporation and condensation reservoir temperature is minimized, or when the chosen evaporation design temperature is elevated. On the other hand, the collector’s efficiency declines with the elevation of evaporation temperature as a result of increased heat losses from its surfaces. Noting this inverse relationship, it’s deducible that a plot of the product of $COP$ and Collector Efficiency (a quantity defined as the overall system $COP$) versus evaporation temperature would exhibit a characteristic inflection point at the evaporation temperature that maximizes both these inversely related parameters. For the DX-SAHP, the inflection point was seen to occur at -2\textdegree C. Knowing the design evaporation temperature, the team was able to subsequently determine the predicted collector efficiency, and the predicted useful, net collected heat. These values will later be leveraged to evaluate the theoretical performance of the DX-SAHP against the logged experimental performance. Using the code, the team also determined the system’s necessary flow rate, which supplemented the selection process of the remaining sub-components of the heat pump cycle.
 
-\section{Collector Final Design}
-
 \subsection{Insulation Selection}
 
 Insulation is one of the most efficient ways to save energy by reducing heat loss during winter and thus lowering energy bills \cite{insulation}. Reducing heat loss in the collector means the compressor will have to do less work to meet the hot water requirements. For the flat plate collector, it was essential to investigate the concepts pertaining to location of any heat losses to the surroundings, type, thickness, and cost of insulation.
 
 \medskip
-In the solar flat plate collector, heat losses occur through the absorber plate by top losses. As the plate heats up, some of this heat is then transferred to R-410A (within the copper tubing of the collector that is brazed beneath and to the aluminum absorber plate), while some of the heat being lost to its surroundings. The heat losses occurring through the back, and sides of the collector are respectively known as bottom and edge losses \cite{heat_losses}. From heat transfer and thermodynamic contexts, it is understood that these heat losses occur in the form of conduction, convection, and radiation \cite{heat_losses}.
+In the solar flat plate collector, heat losses occur through the absorber plate by top losses. As the plate heats up, some of this heat is then transferred to R-134A (within the copper tubing of the collector that is bonded to the rear side of the aluminum absorber plate), while some of the heat is lost to the surroundings. The heat losses occurring through the back, and sides of the collector are respectively known as bottom and edge losses \cite{heat_losses}. From heat transfer and thermodynamic contexts, it is understood that these heat losses occur in the form of conduction, convection, and radiation as described in the sections above.\cite{heat_losses}.
 
 \medskip
 Based on the engineering analysis and design of the collector, the bottom and sides require insulation as to minimize any heat losses and the consideration of an insulation cover being required in case of probable exposure area that is responsible for the occurrence of any heat losses.
@@ -253,7 +248,6 @@ The insulation materials representative of some of the materials commonly used i
     \item Extruded polystyrene.
 \end{itemize}
 
-\newpage
 The following table represents the range of thermal conductivity values, temperature, and R-values \cite{thermal_insulation} for the mentioned types of insulation materials.
 
 \medskip
@@ -301,9 +295,11 @@ The following table identifies the American Society for Testing and Materials (A
 \end{table}
 
 \medskip
-Based on the above analysis, mineral wool was selected as the insulating material to be used for the solar flat plate collector due to its excellent thermal properties. Mineral wool has low thermal conductivity values, allowing for less heat to be passed through and lost to the surroundings. The suitable temperature range allows for use up to 649\textdegree C as this material will not melt until temperatures reach beyond 1,000\textdegree C. The R-values are within a range of R-3.7-R-4.3, allowing for it to suitably resist heat flow. In addition, mineral wool is naturally moisture resistant \cite{mineral_wool}.
+Based on the above analysis, mineral wool was selected as the insulating material to be used for the solar flat plate collector due to its excellent thermal properties. The mineral wool insulation was sponsored by Frank of FN Insulations. 
 
-\newpage
+\medskip
+Mineral wool has low thermal conductivity values, allowing for less heat to be passed through and lost to the surroundings. The suitable temperature range allows for use up to 649\textdegree C as this material will not melt until temperatures reach beyond 1,000\textdegree C. The R-values are within a range of R-3.7-R-4.3, allowing for it to suitably resist heat flow. In addition, mineral wool is naturally moisture resistant \cite{mineral_wool}.
+
 \subsection{Glazing Selection}
 
 Glazing refers to the top cover of the solar collector. It has three main purposes:
@@ -319,7 +315,7 @@ Glazing refers to the top cover of the solar collector. It has three main purpos
 The two main materials used for solar collector glazing are glass and polycarbonate.
 
 \medskip
-The main parameter to consider when choosing the glazing is the transmittance. Transmissivity is a measure of how much light passes through the object for a given wavelength. For a solar collector, the glazing should let through as much sunlight as possible but be opaque to the infrared radiation emitted by the absorber plate. This will allow for the most heat gain possible. The secondary parameters which should be minimized are the absorptance and reflectance of the glazing. The absorptivity is a measure of how much radiation is absorbed for a given wavelength and reflectivity is how much is reflected \cite{emissivity}.
+The main parameter that was considered when choosing the glazing is the transmittance. Transmissivity is a measure of how much light passes through the object for a given wavelength. For a solar collector, the glazing should let through as much sunlight as possible but be opaque to the infrared radiation emitted by the absorber plate. This will allow for the most heat gain possible. The secondary parameter, which should be minimized is the reflectance of the glazing. The reflectivity is represents the fraction of reflected solar rays. \cite{emissivity}.
 
 \medskip
 Another important factor to consider is the solar heat gain coefficient (SHGC). The SHGC is a measure of how much solar radiation is admitted. A high SHGC rating indicates that the materials are more effective at collecting solar heat, which is better for a solar collector \cite{epri}.
@@ -351,11 +347,11 @@ As seen from Table 4 above, all the materials found met the temperature requirem
 The absorber plate is the component which absorbs solar radiation and emits it as infrared radiation. This heat is then absorbed by the copper piping and then the refrigerant. For this purpose, the plate must have high absorptivity, heat conductivity, and emissivity. The most common materials for the absorber plate are copper, aluminum, and steel; the thermal conductivities of these metals are $398 W/mK$, $247 W/mK$, and $45 W/mK$ respectively \cite{thermally_conductive_materials} \cite{thermal_conductivity_of_steel}. Steel was found to have too low thermal conductivity for this application. The price of copper was \$9.55/kg \cite{copper_prices} and aluminum was \$6.33/kg \cite{aluminum_prices}. Aluminum was selected for our application because it was more readily available.
 
 \medskip
-A selective coating will be applied to the absorber plate to increase the amount of sunlight absorbed. The coating should have high absorbance and low emissivity, so all the absorbed heat will be transferred to the aluminum plate. It should also be able to withstand high temperatures and be UV resistant. Thurmalox 250 was identified as a coating specifically suited for solar thermal collector application \cite{high_temp_coating}.
+A selective coating was applied to the absorber plate to increase the amount of sunlight absorbed.Thurmalox 250 was identified as a coating specifically suited for solar thermal collector application. The coating possesses a high absorbance and low emissivity, so all the absorbed heat will be transferred to the aluminum plate. It is capable of withstanding high temperatures and is  UV resistant. \cite{high_temp_coating}.
 
 \subsection{Manifold Design}
 
-To determine the copper tube design beneath the absorber plate of the solar flat plate collector, it was convenient to create a two-dimensional drawing to determine the layout. The design of the tubing helped determine the overall length of tubing that would be required. A serpentine tube design was selected as it maximizes the amount of surface area, and for R-410A, for heat transfer to occur within a limited amount of space \cite{serpentine_bending}.
+To determine the copper tube design beneath the absorber plate of the solar flat plate collector, it was convenient to create a two-dimensional drawing to determine the layout. The design of the tubing helped determine the overall length of tubing that would be required. A serpentine tube design was selected as it maximizes the amount of surface area, and for R-134A, for heat transfer to occur within a limited amount of space \cite{serpentine_bending}.
 
 \medskip
 The serpentine copper tube design for the flat plate collector was completed based upon the following criteria:
@@ -368,9 +364,8 @@ The serpentine copper tube design for the flat plate collector was completed bas
 \end{enumerate}
 
 \medskip
-In the following figure, two designs were created, (a) and (b). Both designs have an equal manifold spacing. The design for (a) was selected as this design leads to a greater surface area allowing for more heat transfer to occur. With the design for (a) having more U-bends in the tubes, this allows for more time for heat transfer to take place with R-410A. A tube bending tool may be used to force the tube to conform to a bend diameter of 3 15/16” [100 mm]. The overall straight length between both designs differs by 5 inches [127 mm] in which the cost between both tube designs will be similar.
+In the following figure, two designs were created, (a) and (b). Both designs have an equal manifold spacing. The design for (a) was selected as this design leads to a greater surface area allowing for more heat transfer to occur. With the design for (a) having more U-bends in the tubes, this allows for more time for heat transfer to take place with R-134A. 
 
-\newpage
 \begin{figure}[ht]
     \centering
     \subfloat[\centering Horizontally Spaced Manifold] {{\includegraphics[width=7.7cm]{images/manifold_type_a.png}}}
@@ -387,104 +382,228 @@ In the following figure, two designs were created, (a) and (b). Both designs hav
     \caption{SOLIDWORKS Assembly of Solar Thermal Collector}
 \end{figure}
 
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=\textwidth]{images/collector_assembly_exploded.png}
-    \caption{Exploded View of Solar Thermal Collector}
-\end{figure}
 
 \medskip
-Although the collector frame is a simple enclosure, sizing limits and assembly considerations must be understood. The wood casing will be created in multiple parts and grooves will be added to account for the thermal expansions of both the glass and absorber plates during winter thermal contractions and summer thermal expansions. 
+Although the collector frame is a simple enclosure, sizing limits and assembly considerations has to be considered. The wood casing was created in multiple parts and grooves were added to account for the thermal expansions of both the glass and absorber plates during winter thermal contractions and summer thermal expansions. 
 
 \medskip
-The depth of the grooves will be determined using the equation for linear thermal expansion.
+The depth of the grooves were determined using the equation for linear thermal expansion.
 \begin{align}
     \Delta L = \alpha_L L_c \Delta T
 \end{align}
 
 \medskip
-The order in which the components are assembled must be taken in consideration to avoid scenarios where components are blocked by other components. As component selections become finalized and are ready to order, fitment tolerances will be subsequently added.
+The order in which the components were assembled was taken in consideration to avoid scenarios where components are blocked by other ones. As component selection was finalized, fitment tolerances were added.
+\medskip
 
-\newpage
-\section{Final Component Selection}
+\section{Component Selection}
 
-For component matching, external to the solar flat plate collector, suitable components and materials for the system based on data and design parameters are being selected. The components mentioned below are the compressor, condenser, expansion valve, control system, and minor parts. The evaluation of manufacturing methods and metal-joining processes as well such as, brazing and/or welding, and use of items such as couplings, and tube adapters have been taken under consideration. The following selection of components are preliminary as of now and will be finalized in the Final Design Report.
+For component matching, external to the solar flat plate collector, suitable components and materials for the system based on data and design parameters were selected. The components included the compressor, condenser, expansion valve, control system, and minor parts. The evaluation of manufacturing methods and metal-joining processes, such as, brazing, soldering and/or welding, and use of items such as couplings, and tube adapters were also considered.
 
 \subsection{Compressor Selection}
 
-A compressor is required after the collector to meet the domestic hot water requirements. A hermetically sealed compressor is ideal for domestic heat pump systems. The compressor will be a single stage, rotary vane, positive displacement compressor. The motor will be a single phase, variable speed motor. The compressor must operate within the specified voltage of approximately 110/120 V and 50-60 Hz \cite{power_plugs}. In the case where it is greater, further in-depth investigation into transformers \cite{canada_voltage} \cite{valve_selection} or power amplifiers is required to overcome this difference.
+A compressor is required after the collector to meet the domestic hot water requirements.
 
 \medskip
-The compressor selection is based on the lowest evaporating temperature of -10°C. To obtain a condensation temperature of 60\textdegree C, the pressure differential needs to be controlled via the motor speed.
+The compressor selection was based on the lowest evaporating temperature of -6°C. However, the operating envelope of the compressor can reach an evaporation temperature of -8\textdegree C before it automatically shuts down. The fixed speed scroll compressor will allow for the domestic hot water to be heated to 55\textdegree C. The following figure shows the operating envelope of the compressor sponsored by Emerson.
 
-\medskip
-The compressor is also evaluated based on the criteria shown below:
-
-\medskip
-\begin{enumerate}[itemsep=3mm, parsep=-1mm, label=\roman*.]
-    \item Compatibility with R-410A.
-    \item Working pressure ratings.
-    \item Lubricant compatibility.
-    \item Power requirement.
-\end{enumerate}
-
-\medskip
-The power requirement for the compressor was found to be 1.138 horsepower based on the required flow rate.
-
-\medskip
-The rotary vane variable speed hermetic compressor was selected for this project. These types are commonly used for appliances and for residential applications. It may be applied for the purposes of the DX-SAHP as it operates at low capacities, requiring less input power. The compressor works by rotating action of a roller inside a cylinder to compress the refrigerant.
-
-\medskip
-The following figure shows what the hermetic variable speed compressor looks like for a low input power rating. However, this compressor is not a finalized selection as vendors are currently being contacted.
-
-\newpage
 \begin{figure}[H]
     \centering
-    \includegraphics[width=8cm]{images/var_speed_compressor.png}
-    \caption{Hermetic Variable Speed Compressor \cite{variable_speed_drives}}
+    \includegraphics[width=8cm]{images/operating_envelope.png}
+    \caption{Operating Envelope of the Fixed Speed Scroll Compressor}
 \end{figure}
 
 \medskip
-The compatibility between the hermetic variable speed compressor and electronic expansion valve is crucial as this controls the pressure differential of R-410A through the compressor and the amount of flow rate through the valve. Vendors have been provided the design specifications, controller requirements, and refrigerant parameters to size these components. The copper piping, having a diameter of 0.75 inches, is to be connected to the suction and discharge of the compressor and valve. The determination of the diameters and materials of these lines are being communicated with the vendor as to allow the easiest route for metal-joining and installation purposes. The two choices, as of now, to connect the external piping to the suction/discharge lines of both the compressor and valve, can either be done by brazing the copper piping to the connecting tubes and/or by use of a copper adapter tube \cite{exv_selection}. The use of an adapter tube allows for the connection of the suction/discharge connector to be connected to the external piping without the need of expanding the connectors or reducing the diameters of the connection tubes.
-
-\subsection{Condenser Selection}
-
-The condenser is responsible for the heat transfer between the refrigerant and the domestic hot water. It also stores and insulates the water for immediate use if required. The basic components of the condenser are a hot water tank with a copper condensing coil inside to allow for heat transfer between the refrigerant and the water. A simple heat exchanger will not suffice as hot water needs to be stored for use when there is no solar radiation available.
-
-\medskip
-The selection criteria for the condenser are as follows:
+The compressor was also evaluated based on the criteria shown below: 
 
 \medskip
 \begin{enumerate}[itemsep=3mm, parsep=-1mm, label=\roman*.]
-    \item Must be able to store at least 225L of water.
-    \item Max condensing coil pressure of 3800kPa.
-    \item Max condensing coil temperature of 85\textdegree C.
-    \item Heat rejection of 2.5kW.
-    \item Compatible with R-410A.
+    \item Compatibility with R-134A.
+    \item Evaporation Temperature Range: -6\textdegree C to 14\textdegree C.
+    \item Compressor Rated Power: 0.75 HP to 1.25 HP.
 \end{enumerate}
 
 \medskip
-Proper sizing of the condenser will be important in ensuring the conditions of the domestic hot water are optimal. Too small of a condensing unit may result in overheated water and vice versa. Currently vendors are being contacted with the system requirements to obtain a condenser that meets the above criteria.
+The power requirement for the compressor was found to be 1.138 horsepower based on the required flow rate. The single-phase, 208/230 Volts at 60 Hertz, fixed speed scroll compressor was selected for this project. These types are commonly used for many residential heat pump applications. It may be applied for the purposes of the DX-SAHP as it operates at low capacities, requiring less input power. Compared to its hermetic reciprocating counterparts, the Copeland scroll compressor is simpler to incorporate into new designs and additional design costs \cite{copeland}. The benefits of this type were previously discussed under the HVAC Types in this report.
+
+\medskip
+The following figure shows the fixed speed scroll compressor.
 
 \medskip
 \begin{figure}[H]
     \centering
-    \includegraphics[width=6 cm]{images/water_tank_condenser.jpg}
+    \includegraphics[width=4.5cm]{images/fixed_speed_compressor.png}
+    \caption{Fixed Speed Scroll Compressor}
+\end{figure}
+
+\medskip
+The compatibility between the fixed speed scroll compressor and electronic expansion valve is crucial as this controls the pressure differential of R-134A through the compressor and the amount of flow rate through the valve. The external sponsors of Emerson were provided with the design specifications, controller requirements, and refrigerant parameters to size these components. The copper piping, having a diameter of 3/8 inches, is to be connected to the suction and discharge of the compressor and valve. The determination of the diameters and materials of these lines were communicated with the sponsor as to allow the easiest route for metal-joining and installation purposes. The external piping to the suction/discharge lines of both the compressor and valve, were accomplished by brazing the copper piping to the connecting tubes and additional pipe connections and fittings were used. 
+
+\subsection{Condenser Selection}
+
+A series of condenser designs were considered before settling on the final configuration. However, all the designs had to meet the five basic criteria below:
+
+\medskip
+\begin{enumerate}[itemsep=3mm, parsep=-1mm, label=\roman*.]
+    \item Maximum condensing coil temperature of 85\textdegree C.
+    \item Maximum condensing coil pressure of 3800kPa.
+    \item Total possible heat rejection of 2.5kW.
+    \item Condensing coil must be compatible with R-134A.
+    \item Storage capacity of 225L.
+\end{enumerate}
+
+\medskip
+The initial idea for the condenser was to use an insulated water tank with an integrated helical copper coil on the inside shown in Figure 3.10 below. However, sourcing these pre-built tanks with the aforementioned criteria was difficult. This condensing unit was broken down into its basic components in the next designs.
+
+\medskip
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=5 cm]{images/water_tank_condenser.jpg}
     \caption{Water Tank with Two Condensing Coils \cite{water_tank_selection}}
+\end{figure}
+
+\medskip
+The second design consisted of an insulated water tank with an external heat exchanger as shown in Figure 3.11 below. The water would be pumped from a cold-water storage tank, through the now external heat exchanger, and stored in an insulated tank. The external heat exchanger shown is a coaxial coil condenser. This configuration required the use of a pressure actuated water regulating valve to control the flow rate of water into the coaxial condenser coil. The valve opening is controlled by the pressure in the refrigerant side. This was to allow the water to be heated from 10\textdegree C to 55\textdegree C in a single pass through the coil. There were two main drawbacks to this design. The first being that, since the water is continually being heated from 10\textdegree C to 55\textdegree C, the compressor would constantly be working at its maximum capacity; this in turn would increase the work in $W_in$ and thus reduce the $COP$. Secondly, if the water is not heated to 55\textdegree C in a single pass, there is no process to reuse and reheat this water. This may lead to frequently wasting water during testing as the unheated water would have to be disposed. Therefore, the system was reworked.
+
+\medskip
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=12cm]{images/condensor2.png}
+    \caption{Second Condensing Design}
+\end{figure}
+
+\medskip
+The third iteration of the design, shown in Figure 3.12 below, consisted of a water recirculation system to address the previous problems. Additionally, the use of a cold-water storage tank was not required with this design. The main disadvantage of this design is that, as the water heats up, the rate of heat transfer between the refrigerant and water will decrease leading to a lower $COP$. However, as the water temperature difference decreases, the compressor draws less power to heat the preheated water. This means that the overall $COP$ of the system would be higher than if there was no recirculation. Furthermore, since the water is recirculated, the use of a pressure actuated valve is no longer required. The valve may cause a decrease in $COP$ due to the compressor doing more work to heat the water from 10\textdegree C to 55\textdegree C during startup even if sunlight is not available. In a recirculation system without the pressure actuated valve, the water will most efficiently be heated when there is available sunlight and will not have to rely on the compressor during periods of low irradiance.
+
+\medskip
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=12cm]{images/condensor3.png}
+    \caption{Third Condensing Design}
+\end{figure}
+
+\medskip
+This results in the fourth and final design, without the pressure actuated water regulating valve, shown in Figure 3.13 below. The water is recirculated from the hot-water storage tank to the condenser coil and back by the pump.
+
+\medskip
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=12cm]{images/condensor4.png}
+    \caption{Fourth (Final) Condensing Design}
+\end{figure}
+
+\medskip
+For this final design, the components were selected as shown below.
+
+\subsubsection{Condenser Piping}
+
+\medskip
+Sharkbite connections with \nicefrac{3}{4}" PEX piping was chosen for ease of assembly. The allowable temperature range was also 0.5\textdegree C to 93.3\textdegree C \cite{pex_tech}, more than enough for this application. 
+
+\subsubsection{Hot-Water Tank}
+
+\medskip
+A 250L hot-water tank could not be easily sourced, so for the purpose of testing, a 178L Rheem hot-water tank was chosen \cite{hot_water_tank}. Once the 178L is heated to 55\textdegree C, the water can be dumped to allow for new water to be heated.
+
+\medskip
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=3.5cm]{images/rheem_178L_tank.JPG}
+    \caption{Rheem 178L Hot-Water Tank}
+\end{figure}
+
+\subsubsection{Condenser Coil}
+
+\medskip
+The external heat exchanger is a \nicefrac{3}{4} ton counterflow coaxial coil condenser \cite{coax_coil}.
+
+\medskip
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=4cm]{images/coax_coil.JPG}
+    \caption{\nicefrac{3}{4} ton counter flow coax coil}
+\end{figure}
+
+\subsubsection{Water Side Pressure Drop}
+
+\medskip
+The pressure drop had to be found to find a suitable water pump. The sources of the drop in pressure are from pipe friction, change in height, pipe bends, and the condenser coil itself. These were calculated for a \nicefrac{3}{4}” pipe as shown below:
+
+The pressure drop due to friction can be found for PEX piping from the tables shown in Figure 3.16 below.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=8.5cm]{images/pex_pressure_drop.JPG}
+    \caption{PEX Piping Pressure Drop Table}
+\end{figure}
+
+\medskip
+The required flow rate can be calculated from the following \cite{water_valve}:
+\begin{align}
+    Flow\ [GPM] = \ddfrac{Tons\ of\ Refrigeration \times 15000}{500\times (T_{out}-T_{in})}
+\end{align}
+
+\medskip
+This tells us the required flow rate to heat the water from the inlet to the outlet temperature (10 \textdegree C to 55 \textdegree C), in a single pass through the condenser, is 0.5GPM. However, since this design recirculates the water, it is not required to go from 10 \textdegree C to 55 \textdegree C in a single pass. This means that for faster flow rates, the change in water temperature would decrease, and more passes through the condenser are needed. For a flow rate of 1.8GPM, the change in temperature is 12.5 \textdegree C.
+
+\medskip
+The pressure drop from a change in height is calculated as \cite{fluid_mechanics}:
+\begin{align}
+    P_h = \rho g h
+\end{align}
+
+\medskip
+The change in height will depend on the height of the piping above the hot water tank since it is being recirculated.
+
+\medskip
+The pressure drop from the coaxial condenser coil can be found from the manufacture specified table shown in Figure 3.17 below:
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=10cm]{images/coax_coil_pressure_drop.JPG}
+    \caption{Coaxial Coil Pressure Drop Table}
+\end{figure}
+
+\medskip
+Finally, the pressure drop due to bends in the piping can be calculated as \cite{fluid_mechanics}:
+\begin{align}
+    \Delta P_{elbow} = \ddfrac{K_L\rho w}{2}
+\end{align}
+
+\medskip
+$K_L$ is the loss coefficient of the specified component or elbow. The loss coefficient for a regular 90\textdegree threaded elbow is 1.5.
+
+\subsubsection{Hot Water Recirculating Pump}
+
+Since the water is recirculating, the pump must meet the minimum required head which was found to be $\sim4.5ft$ for a flow rate of 2GPM making conservative estimates for the length of piping, number of elbows, change in height, and pressure drop from the condenser.
+
+\medskip
+The Astro Express 2 hot water pump \cite{astro_express} was selected for this purpose. It can handle temperatures up to 60\textdegree C. The pump curves are shown in Figure 3.18 below.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=2.5cm]{images/astro_express.JPG}
+    \caption{Astro Express 2 hot water recirculating pump}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=10cm]{images/astro_express_performance.jpg}
+    \caption{Astro Express 2 Pump Curves}
 \end{figure}
 
 \subsection{Electronic Expansion Valve Selection}
 
-Selection of electronic expansion valves (EXV) is based on the following criteria:
+Selection of electronic expansion valves (EXV) was based on the following criteria:
 
 \medskip
 \begin{enumerate}[itemsep=3mm, parsep=-1mm, label=\roman*.]
-    \item Suitable for HFC refrigerants (i.e., R-410A).
+    \item Suitable for HFC refrigerants (i.e., R-134A).
     \item Rated Capacity (kW).
 \end{enumerate}
 
 \medskip
-Firstly, the selected valve must be compatible with the chosen refrigerant (i.e., R-410A).
+Firstly, the selected valve must be compatible with the chosen refrigerant (i.e., R-134A).
 
 \medskip
 Secondly, the expansion valve must be able to provide the needed pressure reduction for system parameters. This is usually given by a vendor through an EXV’s capacity rating, which references the system’s heat removal rate in kW. Vendors provide a capacity rating for the following refrigerant conditions, based on AHRI standards \cite{exv_performance}:
@@ -508,11 +627,11 @@ Secondly, the expansion valve must be able to provide the needed pressure reduct
 If the above standard is not used, vendors must specify the operating conditions used instead for their stated rating.
 
 \medskip
-Since these operating conditions differ from the ones in the DX-SAHP, a correction factor must be added to the required capacity rating, to compare it with ratings from the vendor. The following information is needed to determine the correction factor:
+Since these operating conditions differ from the ones in the DX-SAHP, a correction factor must be added to the required capacity rating, to compare it with ratings from the vendor. The following information was needed to determine the correction factor:
 
 \medskip
 \begin{enumerate}[itemsep=3mm, parsep=-1mm, label=\roman*.]
-	\item Refrigerant: R-410A.
+	\item Refrigerant: R-134A.
 	\item Condenser capacity: $Q_L = 2.5 kW$.
 	\item Evaporating temperature: $T_{evap} = \SI{-10}{\celsius}$.
 	\item Condenser temperature: $T_{cond} = \SI{60}{\celsius}$.
@@ -520,36 +639,12 @@ Since these operating conditions differ from the ones in the DX-SAHP, a correcti
 \end{enumerate}
 
 \medskip
-All vendors include data sheets that specify the correction factors that must be used for their valve selection. The chosen valve was from manufacturer Danfoss who provided the following table \cite{exv_types} to aid in correction factor selection.
-
+Based on these conditions, the team received help from Emerson, one of the project sponsors, in selecting the electronic expansion valve. The EX2 3/8X1/2 ODF expansion valve from Emerson was chosen, and Emerson kindly provided the product as well.
 \medskip
-\begin{table}[H]
-\centering
-\caption{Correction Factors for R-410A based on Degree of Subcooling}
-\begin{tabular}{|P{35mm}|P{15mm}|P{15mm}|P{15mm}|P{15mm}|P{15mm}|}
-    \hline
-    \cellcolor{orangeRed}$\Delta T_{sub}$ & 0K & 4K & 10K & 15K & 20K \\
-    \hline
-    \cellcolor{orangeRed}Correction Factor & 1.00 & 1.06 & 1.14 & 1.21 & 1.28 \\
-    \hline
-\end{tabular}
-\end{table}
 
-\medskip
-From Table 3.5, it can be seen that a correction factor of 1.06 must be used on $Q_L$ to get the nominal rating.
-\begin{align}
-    COP_{corrected} = \ddfrac{2.5kW}{1.06} = 2.36kW
-\end{align}
+\subsection{Refrigerant Piping}
 
-\medskip
-Thus $COP_{corrected}$ can be compared with ratings provided by the vendor at the system’s $T_{evap}$ and $T_{cond}$, to find to find an appropriate expansion valve.
-
-\medskip
-From this process it was found that the Danfoss ETS 6-10 \cite{exv_types} satisfied the needed capacity with a sufficient safety factor, being able to provide a capacity of $2.9 kW$ at the specified $T_{evap}$ and $T_{cond}$. For a full list of the vendor data sheets that were considered during EXV selection, please see the Electronic Expansion Valve selection document in the Design Binder.
-
-\subsection{Piping}
-
-Piping is an essential part of a heat pump; it carries the energy gained by the collector and compressor to be released in the condenser. A preliminary analysis was done to determine the drop in pressure between major components in the system. This pressure drop was considered to be from friction in the pipe, elbows, and changes in height. The variable definitions for all the equations below can be found in Appendix A.
+Piping is an essential part of a heat pump; it carries the energy gained by the collector and compressor to be released in the condenser. A preliminary analysis was done to determine the drop in pressure between major components in the system. This pressure drop was considered to be from friction in the pipe, elbows, and changes in height. The total pressure drop of the system was necessary in determining the compressor size. The variable definitions for all the equations below can be found in Appendix A.
 
 \medskip
 The equation for pressure drop due to friction in a circular pipe is given as \cite{fluid_mechanics}:
@@ -558,7 +653,7 @@ The equation for pressure drop due to friction in a circular pipe is given as \c
 \end{align}
 
 \medskip
-The friction factor, f, is calculated separately for laminar and turbulent flows; however, in this system, only turbulent flows were found. For turbulent flow, the Colebrook White equation \cite{fluid_mechanics} was used to calculate the friction factor. This was solved by moving all terms to one side and using the \verb|fzero| MATLAB \cite{MATLAB} function to iteratively solve for the friction factor.
+The friction factor, f, was calculated separately for laminar and turbulent flows; however, in this system, only turbulent flows were found. For turbulent flow, the Colebrook White equation \cite{fluid_mechanics} was used to calculate the friction factor. This was solved by moving all terms to one side and using the \verb|fzero| MATLAB \cite{MATLAB} function to iteratively solve for the friction factor.
 \begin{align}
     \frac{1}{\sqrt{f}} = -2.0log\left( \ddfrac{\frac{e}{D_i}}{3.7} + \frac{2.51}{Re\sqrt{f}}\right) 
 \end{align}
@@ -591,25 +686,14 @@ The pressure drops were found for each section as described below:
     \item Between 4 (Evaporator Exit) and 1 (Compressor).
 \end{enumerate}
 
-\newpage
 \begin{figure}[H]
     \centering
-    \includegraphics[width=11cm]{images/pressure_drops.jpg}
-    \caption{Pressure Drop for \nicefrac{1}{4}, \nicefrac{1}{2}, \nicefrac{3}{4}, and 1 inch Diameter Piping at each Section}
+    \includegraphics[width=11cm]{images/friction_pressure_drop.jpg}
+    \caption{Pressure Drop for \nicefrac{1}{4}, \nicefrac{5}{16}, \nicefrac{3}{8}, \nicefrac{1}{2}, \nicefrac{3}{4}, and 1 inch Diameter Piping at each Section}
 \end{figure}
 
 \medskip
-As seen from Figure 3.10 above, the pressure drop in the \nicefrac{1}{4} inch pipe is magnitudes greater than it is for the other diameters. Figure 3.11 below shows the pressure drops for the \nicefrac{1}{2}, \nicefrac{3}{4}, and 1-inch diameters.
-
-\medskip
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=11cm]{images/pressure_drops_new.jpg}
-    \caption{Pressure Drop for \nicefrac{1}{2}, \nicefrac{3}{4}, and 1 inch Diameter Piping at each Section}
-\end{figure}
-
-\medskip
-As seen from Figures 3.10 \& 3.11 above, as the diameter of the piping decreased, the pressure drop per meter increased drastically. Based on these values however, the pressure drop due to friction for diameters greater than \nicefrac{1}{4}” is insignificant considering the system operating pressures that range from $750kPa$ – $3800kPa$.
+As seen from Figures 3.10 \& 3.11 above, as the diameter of the piping decreased, the pressure drop per meter increased drastically. Based on these values however, the pressure drop due to friction for diameters greater than \nicefrac{1}{4}” is insignificant considering the system operating pressures that range from $750kPa$ to $3800kPa$. Additionally, the piping for these sections are all less than a meter.
 
 \medskip
 The pressure drop due to elbows was calculated as follows \cite{fluid_mechanics}:
@@ -627,76 +711,94 @@ The pressure drop due to a change in height was calculated as \cite{fluid_mechan
 \end{align}
 
 \medskip
-Since the piping is not yet finalized, the pressure drop due to elbows are shown for one elbow for each section.
+The pressure drop due to elbows are shown for one elbow for each section below.
 
 \medskip
 \begin{figure}[H]
     \centering
-    \includegraphics[width=11cm]{images/pressure_drops_elbows1.jpg}
+    \includegraphics[width=11cm]{images/1-4in_Elbow Pressure_Drop.jpg}
     \caption{Pressure Drop from a Long Radius 90\textdegree \ Elbow vs. a Threaded 90\textdegree \ Elbow for a \nicefrac{1}{4} inch Pipe}
 \end{figure}
 \begin{figure}[H]
     \centering
-    \includegraphics[width=11cm]{images/pressure_drops_elbows2.jpg}
+    \includegraphics[width=11cm]{images/5-16in_Elbow Pressure_Drop.jpg}
+    \caption{Pressure Drop from a Long Radius 90\textdegree \ Elbow vs. a Threaded 90\textdegree \ Elbow for a \nicefrac{5}{16} inch Pipe}
+\end{figure}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=11cm]{images/3-8in_Elbow Pressure_Drop.jpg}
+    \caption{Pressure Drop from a Long Radius 90\textdegree \ Elbow vs. a Threaded 90\textdegree \ Elbow for a \nicefrac{3}{8} inch Pipe}
+\end{figure}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=11cm]{images/1-2in_Elbow Pressure_Drop.jpg}
     \caption{Pressure Drop from a Long Radius 90\textdegree \ Elbow vs. a Threaded 90\textdegree \ Elbow for a \nicefrac{1}{2} inch Pipe}
 \end{figure}
 \begin{figure}[H]
     \centering
-    \includegraphics[width=11cm]{images/pressure_drops_elbows3.jpg}
+    \includegraphics[width=11cm]{images/3-4in_Elbow Pressure_Drop.jpg}
     \caption{Pressure Drop from a Long Radius 90\textdegree \ Elbow vs. a Threaded 90\textdegree \ Elbow for a \nicefrac{3}{4} inch Pipe}
 \end{figure}
 \begin{figure}[H]
     \centering
-    \includegraphics[width=11cm]{images/pressure_drops_elbows4.jpg}
+    \includegraphics[width=11cm]{images/1in_Elbow Pressure_Drop.jpg}
     \caption{Pressure Drop from a Long Radius 90\textdegree \ Elbow vs. a Threaded 90\textdegree \ Elbow for a 1 inch Pipe}
 \end{figure}
 
 \medskip
-As seen from Figures 3.12 - 3.15 above, the drop in pressure follows the same trend when decreasing the pipe diameter; smaller diameter has larger pressure drops. Additionally, the threaded 90\textdegree \ elbow yields more drop in pressure than the pipe with a large radius elbow as expected.
+As seen from Figures 3.20 - 3.26 above, the drop in pressure follows the same trend when decreasing the pipe diameter; smaller diameter has larger pressure drops. Additionally, the threaded 90\textdegree \ elbow yields more drop in pressure than the pipe with a large radius elbow as expected.
 
 \medskip
-Based on Figures 3.12 - 3.15, using a \nicefrac{1}{4}" copper pipe would result in too much pressure drop in our system; up to a max of $68kPa$ per meter and $19kPa$ per elbow. The \nicefrac{1}{2}" piping was found to have max pressure drops of $2.1kPa$ per meter and $2.6kPa$ per elbow. When considering installing the system for an average home, this may be too much loss in pressure. When comparing the \nicefrac{3}{4}” and 1” piping, both of their pressure drops are insignificant. For \nicefrac{3}{4}”, the max pressure drop was $0.29kPa$ per meter and $0.52kPa$ per elbow. For the 1” pipe, the max pressure drop was $0.071kPa$ per meter and $0.16kPa$ per elbow. To be more cost efficient, a piping size of \nicefrac{3}{4}” was found to be acceptable in minimizing pressure drop and cost.
+When considering the operating point of the entire system from $750kPa$ – $3800kPa$, the pressure drops due to the piping is insignificant. The currently built refrigerant side piping uses \nicefrac{5}{16} and \nicefrac{3}{8} inch pipes. The maximum pressure drop was found to occur between 3 (Expansion valve) and 4 (Evaporator Inlet). The piping length between these sections in the design is less than 0.5m. In this section, the maximum pressure drop from friction for \nicefrac{5}{16} inch piping was found to be $46.5kPa$ per meter. The maximum pressure drop from elbows for \nicefrac{5}{16} was found to be $36.6kPa$ per elbow. The maximum pressure drop from friction for \nicefrac{3}{8} inch piping was found to be $18.6kPa$ per meter. The maximum pressure drop from elbows for \nicefrac{3}{8} was found to be $17.7kPa$ per elbow. Due to the compact system design, the pressure drop due to piping can be considered to be negligible.
 
-\subsection{Minor Components}
+\subsection{Accessory Parts}
 
-\subsubsection{Accumulator}
+\subsubsection{Receiver}
 
-A suction line accumulator is used to prevent any liquid from entering the compressor. If all the refrigerant exiting the collector is not vaporized, there is potential for liquid refrigerant to enter the compressor. Since this system uses a vapor compressor, any liquid refrigerant entering it will damage it. Additionally, the compressor is not modular, and any damage will require a full replacement, so protecting it is a necessity. An accumulator works by using a U-tube to trap any liquid refrigerant and only allowing vapor to flow to the compressor. The accumulator must be able to contain approximately seventy percent of the total refrigerant charge \cite{sporlan}. Additionally, during normal compressor operation, a small amount of oil from the compressor’s components will enter the piping; the accumulator also serves the purpose of collecting and returning this oil back to the compressor. To prevent any vapor from reaching the compressor, the accumulator is installed before the compressor \cite{accumulator}.
+A receiver was added as per recommendations from Emerson and the HVAC contractor from Chinook Refrigeration. The receiver goes after the condensing unit and before the electronic expansion valve. It stores any excess refrigerant that is not being circulated around the system. Since the DX-SAHP system will be operating through a wide range of ambient conditions, there will be several mass flow rates implemented, and thus a need exists for a method to store the excess refrigerant. Having the receiver ensures space in the system to store the excess refrigerant - preventing it from pooling elsewhere.
 
 \medskip
 \begin{figure}[H]
     \centering
-    \includegraphics[width=3.5cm]{images/accumulator.jpg}
-    \caption{Suction Line Accumulator \cite{accumulator_basics}}
+    \includegraphics[width=3.5cm]{images/reciever.png}
+    \caption{Refrigeration Research 3 lb. Receiver}
 \end{figure}
+
+\medskip
+A Refrigeration Research 3 lb 1/4" SAE X 1/4" SAE Vertical Receiver \cite{receiver} was selected due to its availability for easy pick-up in Calgary, and an adequate refrigerant storing capacity of 3 lbs. This capacity was chosen with recommendations from the team’s contact at Emerson. 
 
 \subsubsection{Filter Drier}
 
 To keep the system working at optimal conditions, it is necessary to ensure that there are as little contaminants as possible. The potential contaminants in this system are water, copper shavings, or other contaminants during installation. The filter drier ensures these contaminants are not circulated throughout the system and causing damage; it is installed in the liquid-line of the heat pump before the sight glass \cite{sight_glass}.
 
+\medskip
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=3.5cm]{images/filter_drier.jpg}
+    \caption{EK083S Filter Drier \cite{filter_drier}}
+\end{figure}
+
 \subsubsection{Sight Glass}
 
 The sight glass is needed to view the level of the refrigerant to ensure proper operation. If there are bubbles seen through the sight glass it indicates that there is not enough refrigerant in the system. Additionally, the refrigerant must be subcooled before entering the EXV; therefore, the sight glass is installed before the EXV to ensure only liquid enters it \cite{sight_glass_install}.
 
+\medskip
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=3.5cm]{images/sight_glass.jpg}
+    \caption{\nicefrac{3}{8}" ODF HMI-1TT3 Hermetic Sight Glass Moisture Indicator \cite{liquid_sight_glass}}
+\end{figure}
+
 \section{Control System}
 
-The philosophy of having a control system for this design lies in the fact that the heat pump needs to adapt to varying ambient conditions to still meet the desired heat load. For instance, when there is less available sunlight, the pump might need to be active for a longer amount of time, simply due to the lower heat input rate.
-
-\medskip
-To ensure the heat load requirements are constantly being met, the system must control the following two parameters:
-
-\medskip
-\begin{enumerate}[itemsep=3mm, parsep=-1mm, label=\roman*.]
-	\item Mass flow rate of the refrigerant.
-	\item RPM of the compressor.
-\end{enumerate}
+The philosophy of having a control system for this design lies in the fact that the heat pump needs to adapt to varying ambient conditions to still meet the desired heat load. For instance, when there is less available sunlight, the refrigerant mass flow rate must be lowered, so the refrigerant can spend an adequate amount of time in the solar thermal collector and fully evaporate.
 
 \subsection{Mass Flow Rate Control}
 
-Firstly, the mass flow rate of the refrigerant dictates how fast the refrigerant is flowing through the system. It is critical that the refrigerant enters the compressor as at least a saturated vapor, as any liquid-vapor mixture will damage the compressor. To ensure that full saturation is achieved, the refrigerant must spend enough time in the solar collector that it is able to fully change phase. The time spent in the collector is directly linked to mass flow rate and thus it is critical that this parameter be controlled. For example, during colder conditions where there is less available sunlight, the system needs to be able to lower the flow rate so that the refrigerant can spend more time in the collector to completely changing phase.
+The mass flow rate of the refrigerant is an important control parameter and dictates how fast the refrigerant is flowing through the system. It is critical that the refrigerant enters the compressor as at least a saturated vapor, as any liquid-vapor mixture will damage the compressor. The refrigerant must spend enough time in the solar collector to ensure full phase-change is achieved. The time spent in the collector is directly linked to mass flow rate and thus it is critical that this parameter be controlled. For example, during colder conditions where there is less available sunlight, the system needs to be able to lower the flow rate so that the refrigerant can spend more time in the collector to completely changing phase.
 
 \medskip
-Mass flow rate will be controlled by the electronic expansion valve. There is a stepper motor in the valve that incrementally opens and closes the valve opening, to adjust the flow rate. This stepper motor responds to electronic signals that will be fed by an external controller. The Danfoss controller \cite{controller} was selected as it is compatible with the system’s chosen electronic expansion valve. The controller input parameters include the refrigerant type, and the solar collector exit temperature and pressure. The temperature and pressure measurements will be given by an AKS model temperature sensor and an AKS 32R pressure transmitter, which are recommended from the controller’s operator’s manual \cite{controller}. The controller must optimize between ensuring that the refrigerant is at least a saturated vapor as it exits the collector, while still reducing the amount of superheat if possible. This is because excessive superheating at the outlet of the collector is an indicator that there is not enough refrigerant passing through and the mass flow rate should be increased. If the mass flow rate is needlessly low, the collector plate average temperature will increase, and $COP$ of the system will fall.
+Mass flow rate will be controlled by the electronic expansion valve. There is a stepper motor in the valve that incrementally opens and closes the valve opening, to adjust the flow rate. This stepper motor responds to electronic signals that will be fed by an external controller. The Emerson super heat controller (Model: XEV12D) was selected as it is compatible with the system’s chosen electronic expansion valve. This superheat controller was generously provided by the team’s industry sponsor, Emerson. The controller input parameters include the refrigerant type, and the solar collector exit temperature and pressure. The temperature and pressure measurements will be given by an 20J NTC thermistor temperature sensor and an 20J NTC pressure transmitter, which are recommended from the controller’s operator’s manual, and were also supplied by Emerson. The controller must optimize the mass flow rate to ensure that the refrigerant is at least a saturated vapor as it exits the collector, while still reducing the amount of superheat if possible. This is because excessive superheating at the outlet of the collector is an indicator that there is not enough refrigerant passing through and the mass flow rate should be increased. If the mass flow rate is needlessly low, the collector plate average temperature will increase, and $COP$ of the system will fall.
 
 \begin{figure}[H]
     \centering
@@ -704,6 +806,18 @@ Mass flow rate will be controlled by the electronic expansion valve. There is a 
     \caption{EXV Controller with Compatible Temperature and Pressure Sensors}
 \end{figure}
 
-\subsection{Compressor RPM Control}
+\medskip
+The wiring of the superheat controller will be done by Chinook Refrigeration.
 
-Secondly, the RPM of the compressor must also be controlled. The RPM directly correlates to the pressure differential created by the compressor. To meet the heat load, the refrigerant conditions at the compressor outlet are taken to be constant at $331K$ and $3670 kPa$. The inlet conditions will be changing however depending on the evaporating temperature reached in the collector. This evaporating temperature is dictated by ambient conditions, and this leads to a situation where there are varying conditions at the inlet of the compressor and just a single outlet condition. Therefore, the compressor must change speed, depending on the inlet conditions, to create whatever pressure differential that is needed to get the refrigerant to the predefined outlet condition. Variable speed compressors are fitted with a temperature sensor at the inlet to determine refrigerant conditions. The needed outlet temperature can be set, and the controller within the compressor will adjust RPM accordingly.
+\subsection{Water Pump Control}
+
+The mass flow rate of the water is decided based on the condensing temperature selected and the coaxial condensing coil’s data sheet. In order to integrate the water circulation with the rest of the heat pump controls, a contactor is used. The contactor is used to turn the compressor on and off and is wired to it externally. Using an auxiliary switch that can be connected to the three-pole contactor, it is possible to turn the water pump on and off in tandem with the compressor. This allows both the refrigerant side and water side of the DX-SAHP to be turned on and off simultaneously. The wiring of the contactor will be done by Chinook Refrigeration.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=8cm]{images/water_control.PNG}
+    \caption{Three-pole Contactor (right) and Auxiliary Switch (left)}
+\end{figure}
+
+\medskip
+Currently an automatic shut down of the system is missing. In future iterations, an additional control element that turns off the full system once the water in the tank is homogeneously at 55 \textdegree C can be integrated.

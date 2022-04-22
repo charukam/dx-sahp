@@ -75,7 +75,7 @@
     \begin{titlepage}
     \thispagestyle{empty}
     \begin{center}
-    {\textbf{DESIGN AND CONSTRUCTION OF A NOVEL DIRECT EXPANSION SOLAR ASSISTED HEAT PUMP}\vspace{5mm}\\TEAM 2 \par}
+    {\textbf{DESIGN AND CONSTRUCTION OF A NOVEL DIRECT EXPANSION SOLAR ASSISTED HEAT PUMP (DX-SAHP)}\vspace{5mm}\\TEAM 2 \par}
     \vfill
     \begin{flushleft}
         \begin{tabular}{ l l r }
@@ -96,7 +96,7 @@
     \vfill
      Department of Mechanical and Manufacturing Engineering \\
     \vfill
-    {ENME 501\\December 10, 2022\\University of Calgary \par}
+    {ENME 502\\April 12, 2022\\University of Calgary \par}
     
     \begin{figure}[H]
         \centering
