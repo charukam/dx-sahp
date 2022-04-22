@@ -50,14 +50,30 @@
 
 %% Executive Summary
 \chapter{Executive Summary}
-This report will explore the research, calculations, and engineering design as the preliminary work required before constructing a Direct Expansion Solar Assisted Heat Pump. These systems combine the benefits of solar energy and heat pump technology to provide hot water for domestic use with high efficiencies. With Calgary being the sunniest city in Canada \cite{calgary_sun}, there is a vast under-utilization of solar energy. This report outlines a heat pump design that utilizes solar energy to heat water for residential use. A parametric study was performed to determine the optimum solar collector configuration. Subsequently, a component matching study was conducted to find compatible compressor, condenser, and expansion valve components. The results from these studies are presented in this report with plans for producing a working model next semester.
+According to ASHRAE, Canada consumes approximately 347 PJ of energy, or 9.5 billion cubic meters of natural gas equivalent for residential and commercial hot water applications on an annual basis. The dependency on this “bridge” fossil fuel leads to approximately ~18 megatons of $CO_2$
+equivalent emissions. With the current urgency of altering energy practices to combat climate change, and Canada’s initiative of becoming a net-zero economy by 2050, the need to adopt cleaner technologies has become paramount.
+
+\medskip
+Direct expansion solar assisted heat pump (DX-SAHP) systems have the potential to provide the heat load required for domestic hot water ($\sim$55\textdegree C) sustainably and with minimum emissions. Contrary to conventional air-source heat pumps, DX-SAHP utilize a solar thermal
+collector to evaporate the working fluid using less energy in the process thereby achieving a higher coefficient of performance ($COP$). With Calgary’s cold climate and the highest solar potential in Canada of about 2396 hours or sunlight available 333 days a year, such a system would make technical and economic sense. In this paper, the design, fabrication, and testing of DX-SAHP system for cold climates is presented. The system consists of a $2m^2$ collector made from an aluminum plate with a serpentine copper tube of $5/16$ in diameter.
+Refrigerant from the evaporator exchanges heat with water from a $178L$ domestic hot water tank through an intermediate condensing heat exchanger coil. After condensation the refrigerant is throttled to the evaporator pressure to restart the cycle.
+
+\medskip 
+A ranking matrix was used to select an appropriate working fluid with emphasis on safety, performance, and environmental impact such as the Ozone Depletion Potential (ODP) and Global Warming Potential (GWP) of the refrigerant. As such, R134a was selected as a suitable refrigerant owing to the higher Coefficient of Performance (COP) and its wide availability
+compared to other refrigerants, however drop-in replacements for the system will be considered.
+
+\medskip
+A mathematical model representing the system was developed by combining the Hottel-Whillier equation for the solar collector and a control volume analysis using the first law of thermodynamics for heat pump cycle. The solution was obtained iteratively using MATLAB coupled with CoolProp and meteorological weather data to determine the theoretical values of
+sequestered heat, collector efficiency, and the COP of the system. Theoretical results showed that a $COP$ in the range of $3.4 - 4.5$ was achievable. With the promising theoretical results, an experimental test setup was constructed to determine the long-term performance of a DX-SAHP under local climatic conditions. Temperature, pressure, and flow data were obtained using an Arduino microcontroller-based Data Acquisition system (DAQ). Moreover, an economic analysis of the system, including projected cost of adoption,
+estimated energy savings, and payback period are discussed.
+
 \newpage
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
  
 %% Acknowledgements
 \chapter{Acknowledgements}  
-The Direct Expansion Solar Assisted Heat Pump project is supported by the Department of Mechanical and Manufacturing Engineering at the University of Calgary. The authors would like to acknowledge Dr. Aggrey Mwesigye, Dr. Simon Li, and Dr. Ron Hugo for providing their technical expertise in support of the development of this project. The authors are also grateful to industry professional David Barret of Klass Mechanical for providing insights crucial to the successful manufacturing of The Direct Expansion Solar Assisted Heat Pump system.
+The Direct Expansion Solar Assisted Heat Pump project is supported by the Department of Mechanical and Manufacturing Engineering at the University of Calgary. The authors would like to acknowledge Dr. Aggrey Mwesigye, Dr. Simon Li, and Dr. Ron Hugo for providing their technical expertise in support of the development of this project. The authors would like to express their sincere gratitude for the additional sponsorship from industry professional Joshua Boles and his team at Emerson for providing technical assistance concerning the assembly of the refrigeration cycle of the Direct Expansion Solar Assisted Heat Pump system . The authors are also grateful to industry professional David Barret of Klass Mechanical for providing insights crucial to the successful manufacturing of the Direct Expansion Solar Assisted Heat Pump system. Special thanks to Frank of FN insulations for sponsoring the mineral wool insulation for the solar thermal collector.
 \newpage
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -110,11 +126,10 @@ The Direct Expansion Solar Assisted Heat Pump project is supported by the Depart
     \addsymbol \mbox{$C_p$}: {thermal capacitance of circulating fluid}
     \addsymbol \mbox{$D$}: {outside pipe diameter $[m]$}
     \addsymbol \mbox{$D_i$}: {inside pipe diameter $[m]$}
+    \addsymbol \mbox{$E$}: {Young's Modulus of Elasticity $[N/m^2]$}
     \addsymbol \mbox{$F'$}: {collector efficiency factor}
     \addsymbol \mbox{$FR$}: {collector heat removal factor}
-    \addsymbol \mbox{$h_{c,p-c}$}: {convection heat transfer coefficient between absorber plate and cover}
-    \addsymbol \mbox{$h_{fi}$}: {heat transfer coefficient between fluid and tube wall}
-    \addsymbol \mbox{$h_{w}$}: {convection heat transfer coefficient between the cover and the ambient}
+    \addsymbol \mbox{$F_cr$}: {critical buckling load $[N]$}
     \addsymbol \mbox{$I$}: {irradiance $[W/m^2]$}
     \addsymbol \mbox{$K_L$}: {loss coefficient}
     \addsymbol \mbox{$L_c$}: {collector length $[m]$}
@@ -138,8 +153,13 @@ The Direct Expansion Solar Assisted Heat Pump project is supported by the Depart
     \addsymbol \mbox{$f$}: {friction factor}
     \addsymbol \mbox{$g$}: {gravity $[m/s^2]$}
     \addsymbol \mbox{$h$}: {heat loss coefficient}
+    \addsymbol \mbox{$h_{c,p-c}$}: {convection heat transfer coefficient between absorber plate and cover}
+    \addsymbol \mbox{$h_{fi}$}: {heat transfer coefficient between fluid and tube wall}
+    \addsymbol \mbox{$h_{w}$}: {convection heat transfer coefficient between the cover and the ambient}
     \addsymbol \mbox{$k$}: {conductivity}
+    \addsymbol \mbox{$k_{eff}$}: {effective length}
     \addsymbol \mbox{$\dot m$}: {mass flow rate of refrigerant $[kg/s]$}
+    \addsymbol \mbox{$r$}: {radius of gyration $[m]$}
     \addsymbol \mbox{$w$}: {velocity of fluid $[m/s]$}
     \addsymbol \mbox{$z$}: {height $[m]$}
 \end{tabbing}
@@ -158,7 +178,7 @@ The Direct Expansion Solar Assisted Heat Pump project is supported by the Depart
     \addsymbol \mbox{$L$}: {heat out}
     \addsymbol \mbox{$p$}: {plate}
     \addsymbol \mbox{$pm$}: {plate mean}
-    \addsymbol \mbox{$U$}: {heat in}    
+    \addsymbol \mbox{$U$}: {heat in}
 \end{tabbing}
 \newpage
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -334,7 +354,52 @@ The Direct Expansion Solar Assisted Heat Pump project is supported by the Depart
     \bibitem{pressure_transducer2} Vision Turbine Flow Metera, "Models BV1000, BV2000 and BV3000 for Low Viscosity and Non-Aggressive Liquids NSF/ANSI Standards 61 and 372 Certified," Februrary 2019. [Online]. Available: \url{https://assets.omega.com/spec/dynasonics_product_summary_brochure_ttm-br-01388-en_2.pdf}. [Accessed 28 November 2021].
     
     \bibitem{power_meter} "MegaPower (TM) Plug Power Meter Monitor Energy Watt Voltage Amps Meter with Electricity Usage Monitor, Reduce Your Energy Cost," [Online]. Available: \url{https://www.bestbuy.ca/en-ca/product/megapower-megapower-tm-plug-power-meter-monitor-energy-watt-voltage-amps-meter}. [Accessed 6 December 2021].
+    
+    \bibitem{energycalc} Direct Energy, "How Much Energy Does my Water Heater Use?," Direct Energy, 2022. [Online]. Available: \url {https://www.directenergy.com/learning-center/how-much-energy-water-heater-use}. [Accessed 25 March 2022].
+    
+    \bibitem{elecbill} Direct Energy, "How to Calculate Your Electric Bill," [Online]. Available: \url{https://www.directenergy.com/learning-center/how-to-calculate-electric-bill}. [Accessed 25 March 2022].
+    
+    \bibitem{gasrate} Gas Alberta Inc., "Gas Rates in Alberta," 2022. [Online]. Available: \url{https://www.gasalberta.com/gas-market/gas-rates-in-alberta}. [Accessed 25 March 2022].
 
+    \bibitem{ABenergy} energyrates.ca, "Impacts on Energy Prices in Calgary, Alberta," [Online]. Available: \url{https://energyrates.ca/comparing-energy-prices-calgary-alberta/}. [Accessed 25 March 2022].
+    
+    \bibitem{electricheater} Home Depot, "Rheem Performance 40 Gal. Medium 6 Year 4500/4500-Watt Elements Electric Tank Water Heater XE40M06ST45U1," [Online]. Available: \url{https://www.homedepot.com/p/XE40M06ST45U1/205810725}. [Accessed 28 March 2022].
+    
+    \bibitem{gasheater} Home Depot, "Rheem Performance 40 Gal. Tall 6-Year 36,000 BTU Natural Gas Tank Water Heater XG40T06EC36U1," [Online]. Available: \url{https://www.homedepot.com/p/XG40T06EC36U1/205811145}. [Accessed 28 March 2022].
+    
+    \bibitem{PBperiod} J. Kagan, "Payback Period Definition," Investopedia, 10 March 2022. [Online]. Available: \url{https://www.investopedia.com/terms/p/paybackperiod.asp}. [Accessed 28 March 2022].
+    
+    \bibitem{lifeheater} Husky Air, "When Should I Replace My Hot Water Heater? Husky Knows!," 9 February 2018. [Online]. Available: \url{https://www.huskyair.com/blog/when-should-i-replace-my-water-heater/}. [Accessed 28 March 2022].
+    
+    \bibitem{temp_library} M. Burton, "Arduino Temperature Control Library," GitHub, 9 September 2020. [Online]. Available:  \url{https://github.com/milesburton/Arduino-Temperature-Control-Library.}. [Accessed 10 March 2022].
+    
+    \bibitem{temp} K. Dimitrov, "DS18B20 (Digital Temperature Sensor) and Arduino," Project Hub, 22 November 2016. [Online]. Available:  \url{https://lastminuteengineers.com/multiple-ds18b20-arduino-tutorial/.}. [Accessed 15 November 2022]
+    
+    \bibitem{mult_temp} LastMinuteEngineers, "Interfacing Multiple DS18B20 Digital Temperature Sensors with Arduino," LastMinuteEngineers, 2021. [Online]. Available:  \url{https://create.arduino.cc/projecthub/TheGadgetBoy/ds18b20-digital-temperature-sensor-and-arduino-9cc806.}. [Accessed 9 March 2022].
+    
+    \bibitem{temp_place} Direct Energy, "How Much Energy Does my Water Heater Use?," Direct Energy, 2022. [Online]. Available:   \url{https://heatpumps.co.uk/2015/06/08/temperature-sensing-with-openenergymonitor/. } [Accessed 15 October 2021].
+    
+    \bibitem{copeland} "Emerson Copeland zB*KA Small Scroll 3/4 to 1 1/4 HP Compressors," Emerson, [Online]. Available: \url{https://climate.emerson.com/en-ca/shop/1/copeland-sku-zb06kae-pfv-118-en-ca.} [Accessed 4 April 2022]. 
+    
+    \bibitem{pex_tech} "PEX Tubing Technical Specifications" PexUniverse, [Online]. Available: \url{https://www.pexuniverse.com/pex-tubing-technical-specs} [Accessed 2 April 2022]. 
+    
+    \bibitem{hot_water_tank} "Rheem 39 Gallon (178L) 6 Year 3kW Tank Electric Water Heater" TheHomeDepot, [Online]. Available: \url{https://www.homedepot.ca/product/rheem-39-gallon-178l-6-year-3kw-tank-electric-water-heater/1000792307} [Accessed 15 May 2022]. 
+    
+    \bibitem{coax_coil} "Packless 3/4 Ton Helix Copper Condenser Coil with Brackets" RefrigerativeSupply, [Online]. Available: \url{https://www.rsl.ca/Product/packless-3-4-ton-helix-copper-condenser-coil-with-brackets-coax-2076h-amt} [Accessed 15 May 2022]. 
+    
+    \bibitem{brazingALCU} "Brazing Aluminium and Copper," 19 March 2010. [Online]. Available: \url {https://www.aluminium-brazing.com/2010/03/19/brazing-aluminium-and-copper/.} [Accessed 4 April 2022].
+    
+    \bibitem{filter_drier} "EK Liquid Line Filter Drier" Emerson, [Online]. Available: \url{https://climate.emerson.com/documents/ek-liquid-line-filter-drier-capacity-table-en-4203222.pdf} [Accessed 13 March 2022].
+    
+    \bibitem{liquid_sight_glass} "3/8" ODF HMI-1TT3 Hermetic Sight Glass Moisture Indicator" Emerson, [Online]. Available: \url{https://www.supplyhouse.com/Emerson-Flow-Controls-065406-3-8-ODF-Hermetic-Moisture-Indicator} [Accessed  4 March 2022].
+    
+    \bibitem{water_valve} "V46 Pressure-Actuated Water-Regulating Valve
+    Product Bulletin" JohnsonControls, [Online]. Available: \url{https://cgproducts.johnsoncontrols.com/MET_PDF/125687.PDF} [Accessed  3 March 2022].
+    
+    \bibitem{astro_express} "astro express 2 hot water recirculation system" Armstrong, [Online]. Available: \url{https://armstrongfluidtechnology.com/en/products/astro-express-2-hot-water-recirculation-system} [Accessed  26 March 2022].
+    
+    \bibitem{receiver} "Refrigeration Research 3 lb 1/4" SAE X 1/4" SAE Vertical Receiver" RefrigerativeSupply, [Online]. Available: \url{https://www.rsl.ca/Product/refrigeration-research-3-lb-1-4-sae-x-1-4-sae-vertical-receiver-1917-all} [Accessed  15 March 2022].
+    
 \end{thebibliography}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -343,6 +408,7 @@ The Direct Expansion Solar Assisted Heat Pump project is supported by the Depart
 \appendix
 
 \include{appendixa}
+\include{appendixb}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
